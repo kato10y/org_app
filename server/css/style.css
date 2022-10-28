@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+/* 共通部分 
+-----------------------*/
+html {
+    font-size: 100%;
+}
+body {
+    font-family: 'Sawarabi Gothic', sans-serif;
+    color: #000000;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #000000;
+}
+img {
+    max-width: 100%;
+}
+
+
+/* 
+Header
+--------------------------*/
+.home_header {
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 9999;
+}
+.logo_link {
+    font-family: 'Dela Gothic One', cursive;
+    font-weight: 700;
+    color: #FA8072;
+}
+
+.second_header {
+    background-color: #FA8072;
+    padding: 5px 10% 15px 10%;
+    color: #ffffff;
+    display: flex;
+    border-radius: 0px 0px 30px 30px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 8888;
+}
+.second_header h2 {
+    height: 100%;
+}
+.icons_wrap {
+    display: flex;
+    right: 50px;
+    position: absolute;
+}
+.icons_wrap li {
+    margin-left: 30px;
+}
+.icon_wrap {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+.icon_wrap p {
+font-size: 0.5rem;
+}
+/*ホバー時に色変更*/
+.icon_wrap :hover {
+    color: #000000;
+}
+
+/* 
+計画一覧部分
+--------------------------*/
+.main_content {
+    height: 100vh;
+    background-color: #d3d3d3;
+}
+.plans {
+    margin: 30px 10%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.plan_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+.plan_list {
+    padding: 10px 20px;
+}
+.plan_day {
+    font-size: 0.5rem;
+}
+.action_icons {
+    margin: 10px 20px;
+    padding: 5px;
+    border-left: solid #000000 1px;
+}
+.plan_icon {
+    height: 100%;
+    padding-left: 15px;
+}
+/*ホバー時に色変更*/
+.plan_icon :hover {
+    color: #FA8072;
+}
+
+/* 
+Footer
+--------------------------*/
+.footer {
+    text-align: center;
+    font-size: 0.5rem;
+    padding: 20px;
+    border-top: solid #FA8072 5px;
+}
