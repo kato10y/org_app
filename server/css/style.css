@@ -97,6 +97,7 @@ font-size: 0.5rem;
     width: 400px;
     background-color: #ffffff;
     border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
 }
 .plan_list {
     padding: 10px 20px;
