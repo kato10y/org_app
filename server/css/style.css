@@ -79,12 +79,16 @@ font-size: 0.5rem;
 --------------------------*/
 .main_content {
     height: 100vh;
+    margin-top: -30px;
     background-color: #d3d3d3;
+    position: relative;
 }
 .plans {
-    margin: 30px 10%;
+    margin-top: 60px;
+    position: absolute;
     display: flex;
-    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 30px 30px;
 }
 .plan_wrap {
     display: flex;
