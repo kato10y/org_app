@@ -19,8 +19,8 @@ a {
 img {
     max-width: 100%;
 }
-textarea{
-    vertical-align:top;
+textarea {
+    vertical-align: top;
 }
 
 /* 
@@ -69,7 +69,7 @@ Header
     color: #ffffff;
 }
 .icon_wrap p {
-font-size: 0.5rem;
+    font-size: 0.5rem;
 }
 /*ホバー時に色変更*/
 .icon_wrap :hover {
@@ -137,7 +137,7 @@ font-size: 0.5rem;
     border-radius: 30px 30px;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
 }
-.form_title {
+.form_headline {
     background-color: #FA8072;
     color: #ffffff;
     display: flex;
@@ -148,14 +148,36 @@ font-size: 0.5rem;
 .forms {
     display: inline-block;
     text-align: left;
-    padding: 20px;
 }
 .form_item {
-    margin-top: 20px;
+    margin: 5% auto;
+}
+.form_title {
+    display: block;
 }
 .form_date {
     display: flex;
     justify-content: space-between;
+}
+/* 枠をつける */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea {
+    border: solid 1px #d3d3d3;
+    padding: 2%;
+    width: 100%;
+}
+input[type="date"] {
+    position: relative;
+    padding: 0 10px;
+    width: 150px;
+    height: 36px;
+    border: 1px solid #d3d3d3;
+    background: transparent;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #d3d3d3;
 }
 /* 
 Footer
