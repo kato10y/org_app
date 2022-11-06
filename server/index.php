@@ -20,18 +20,6 @@
                     <p>追加</p>
                 </a>
             </li>
-            <li>
-                <a href="" class="icon_wrap">
-                    <i class="fa-solid fa-square-plus"></i>
-                    <p>追加</p>
-                </a>
-            </li>
-            <li>
-                <a href="" class="icon_wrap">
-                    <i class="fa-solid fa-square-plus"></i>
-                    <p>追加</p>
-                </a>
-            </li>
         </ul>
     </div>
     <div class="main_content">

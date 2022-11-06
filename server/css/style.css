@@ -83,14 +83,14 @@ Header
     height: 100vh;
     margin-top: -30px;
     background-color: #d3d3d3;
-    position: relative;
 }
 .plans {
-    margin-top: 60px;
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,400px);
+    grid-template-rows: auto;
     gap: 30px 30px;
+    justify-content: center;
+    margin-top: 80px;
 }
 .plan_wrap {
     display: flex;
@@ -249,6 +249,10 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     outline: solid 1px #000000;
     color: #000000;
 }
+
+/* 
+スケジュール部分
+--------------------------*/
 
 /* 
 Footer
