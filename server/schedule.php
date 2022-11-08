@@ -35,19 +35,69 @@
         </ul>
     </div>
     <div class="main_content">
-        <div>
-            <p>13:30</p>
-            <p>15:00</p>
-            <a href="">
-                <i class="fa-solid fa-torii-gate"></i>
-                行動内容（シュノーケリング体験）
-            </a>
-            <p>予約<br>済</p>
-                <div class="action_icons">
-                    <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
+        <div class="schedules">
+            <article class="schedule_wrap">
+                <div class="time">
+                    <p>13:30</p>
+                    <p>〜</p>
+                    <p>15:00</p>
                 </div>
+                <a href="">
+                    行動内容（シュノーケリング体験）
+                </a>
+                <div class="right_wrap">
+                    <div class="reserve_mark already">
+                        <p>予約</p>済
+                    </div>
+                    <div class="action_icons">
+                        <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            </article>
+                        <article class="schedule_wrap">
+                <div class="time">
+                    <p>16:30</p>
+                    <p>〜</p>
+                    <p>18:00</p>
+                </div>
+                <a href="">
+                    移動（バス）
+                </a>
+                <div class="right_wrap">
+                    <div class="reserve_mark not_yet">
+                        <p>予約</p>未
+                    </div>
+                    <div class="action_icons">
+                        <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            </article>
+            </article>
+                        <article class="schedule_wrap">
+                <div class="time">
+                    <p>18:00</p>
+                    <p>〜</p>
+                    <p>19:00</p>
+                </div>
+                <a href="">
+                    ご飯
+                </a>
+                <div class="right_wrap">
+                    <div class="reserve_mark unnecessary">
+                        <p>予約</p>不要
+                    </div>
+                    <div class="action_icons">
+                        <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </div>
+            </article>
         </div>
     </div>
 </body>
+<footer class="footer">
+    <div class="footer_flex"><i class="fa-solid fa-suitcase"></i>タビスケ Made by Yukari</div>
+</footer>
 </html>
