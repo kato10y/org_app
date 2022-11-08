@@ -96,6 +96,10 @@
             </article>
         </div>
     </div>
+    <div class="cost_tab">
+        <div class="cost_wrap">合計金額<p>10000円</p></div>
+        <div class="cost_wrap">１人あたり<p>2000円</p></div>
+    </div>
 </body>
 <footer class="footer">
     <div class="footer_flex"><i class="fa-solid fa-suitcase"></i>タビスケ Made by Yukari</div>

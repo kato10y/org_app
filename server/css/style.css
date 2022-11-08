@@ -299,7 +299,32 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     background-color: #d3d3d3;
     color: #808080;
 }
-
+/* 費用の表示　*/
+.cost_tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    position: fixed;
+    bottom: 100px;
+    right: 10%;
+    background: #FA8072;
+    color: #FFFFFF;
+    padding: 5px 15px 10px 15px;
+}
+.cost_wrap {
+    text-align: center;
+    font-size: 0.8rem;
+}
+.cost_wrap p {
+    background-color: #FFFFFF;
+    color: #FA8072;
+    width: 90px;
+    font-size: 1rem;
+}
 /* 
 Footer
 --------------------------*/
