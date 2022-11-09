@@ -22,7 +22,7 @@
             </li>
             <li>
                 <a href="" class="icon_wrap">
-                    <i class="fa-solid fa-torii-gate"></i>
+                    <i class="fa-solid fa-map"></i>
                     <p>行動</p>
                 </a>
             </li>
