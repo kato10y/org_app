@@ -21,7 +21,7 @@
                 </a>
             </li>
             <li>
-                <a href="" class="icon_wrap">
+                <a href="action.php" class="icon_wrap">
                     <i class="fa-solid fa-map"></i>
                     <p>行動</p>
                 </a>

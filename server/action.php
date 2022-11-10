@@ -2,30 +2,24 @@
 
 <body class="form_content">
     <div class="form_wrap">
-        <h2 class="form_headline">移動計画</h2>
+        <h2 class="form_headline">行動計画</h2>
         <form action="" method="post" class="forms">
             <div class="form_item">
-                <label for="text" class="form_title">移動手段</label>
-                <input type="text" name="transportation" required>
+                <label for="text" class="form_title">実施内容</label>
+                <input type="text" name="content" required>
+            </div>
+            <div class="form_item">
+                <label for="text" class="form_title">場所</label>
+                <input type="text" name="place" required>
             </div>
             <div class="form_item form_date">
                 <div>
-                    <label for="datetime-local" class="form_title">出発時間</label>
+                    <label for="datetime-local" class="form_title">開始時間</label>
                     <input type="datetime-local" name="start_time" required>
                 </div>
                 <div>
-                    <label for="text" class="form_title">出発点</label>
-                    <input type="text" name="starting_point" required>
-                </div>
-            </div>
-            <div class="form_item form_date">
-                <div>
-                    <label for="datetime-local" class="form_title">到着時間</label>
+                    <label for="datetime-local" class="form_title">終了時間</label>
                     <input type="datetime-local" name="end_time" required>
-                </div>
-                <div>
-                    <label for="text" class="form_title">到着点</label>
-                    <input type="text" name="end_point" required>
                 </div>
             </div>
             <div class="form_reserve">
