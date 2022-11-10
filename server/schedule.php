@@ -15,7 +15,7 @@
         </h2>
         <ul class="icons_wrap">
             <li>
-                <a href="" class="icon_wrap">
+                <a href="move.php" class="icon_wrap">
                     <i class="fa-solid fa-train-subway"></i>
                     <p>移動</p>
                 </a>

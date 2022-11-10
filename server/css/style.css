@@ -162,6 +162,16 @@ Header
     display: flex;
     justify-content: space-between;
 }
+.form_date input[type="text"] {
+    height: 36px;
+}
+.form_reserve {
+    display: flex;
+    justify-content: space-between;
+}
+.form_reserve input[type="text"] {
+    width: 180px;
+}
 /* 枠をつける */
 input[type="text"],
 input[type="email"],
@@ -171,7 +181,8 @@ textarea {
     padding: 2%;
     width: 100%;
 }
-input[type="date"] {
+input[type="date"],
+input[type="datetime-local"] {
     position: relative;
     padding: 0 10px;
     width: 150px;
@@ -249,7 +260,38 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     outline: solid 1px #000000;
     color: #000000;
 }
-
+/* セレクトボックス */
+.select {
+    display: inline-block;
+    position: relative;
+    border: 1px solid #d3d3d3;
+    vertical-align: middle;
+}
+.select select {
+    appearance: none;
+    width: 85px;
+    padding: 11px 15px;
+    padding-right: 1em;
+    border: none;
+    outline: 0;
+    background-image: none;
+    box-shadow: none;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+.select::before {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    width: 0;
+    height: 0;
+    border-width: 10px 5px 0 5px;
+    border-style: solid;
+    border-color: #d3d3d3 transparent transparent transparent;
+    content: "";
+    pointer-events: none;
+}
 /* 
 スケジュール部分
 --------------------------*/
