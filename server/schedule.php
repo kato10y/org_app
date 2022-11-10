@@ -27,7 +27,7 @@
                 </a>
             </li>
             <li>
-                <a href="" class="icon_wrap">
+                <a href="lodging.php" class="icon_wrap">
                     <i class="fa-solid fa-bed"></i>
                     <p>宿泊</p>
                 </a>

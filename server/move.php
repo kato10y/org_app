@@ -2,7 +2,7 @@
 
 <body class="form_content">
     <div class="form_wrap">
-        <h2 class="form_headline">移動計画</h2>
+        <h2 class="form_headline"><i class="fa-solid fa-train-subway"></i>移動計画</h2>
         <form action="" method="post" class="forms">
             <div class="form_item">
                 <label for="text" class="form_title">移動手段</label>
