@@ -15,7 +15,7 @@
         </h2>
         <ul class="icons_wrap">
             <li>
-                <a href="" class="icon_wrap">
+                <a href="plan.php" class="icon_wrap">
                     <i class="fa-solid fa-square-plus"></i>
                     <p>追加</p>
                 </a>
