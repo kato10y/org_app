@@ -83,14 +83,14 @@ Header
     height: 100vh;
     margin-top: -30px;
     background-color: #d3d3d3;
-    position: relative;
 }
 .plans {
-    margin-top: 60px;
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,400px);
+    grid-template-rows: auto;
+    gap: 30px;
+    justify-content: center;
+    padding-top: 80px;
 }
 .plan_wrap {
     display: flex;
@@ -251,11 +251,87 @@ input[type="checkbox"]:checked + .checkbox_text::after {
 }
 
 /* 
+スケジュール部分
+--------------------------*/
+.schedules {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 30px;
+    padding-top: 80px;
+}
+.schedule_wrap {
+    width: 600px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+}
+.time {
+    font-size: 0.9rem;
+    line-height: 15px;
+    padding: 5px 15px;
+    text-align: center;
+}
+.reserve_mark {
+    text-align: center;
+    width: 50px;
+
+}
+.reserve_mark p {
+    font-size: 0.8rem;
+}
+.right_wrap {
+    display: flex;
+    margin:0 0 0 auto;
+    align-items: center;
+}
+.already {
+    background-color: #b8e6dc;
+    color: #7a9992;
+}
+.not_yet {
+    background-color: #e6b8c2;
+    color: #997a81;
+}
+.unnecessary {
+    background-color: #d3d3d3;
+    color: #808080;
+}
+/* 費用の表示　*/
+.cost_tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+    text-decoration: none;
+    position: fixed;
+    bottom: 100px;
+    right: 10%;
+    background: #FA8072;
+    color: #FFFFFF;
+    padding: 5px 15px 10px 15px;
+}
+.cost_wrap {
+    text-align: center;
+    font-size: 0.8rem;
+}
+.cost_wrap p {
+    background-color: #FFFFFF;
+    color: #FA8072;
+    width: 90px;
+    font-size: 1rem;
+}
+/* 
 Footer
 --------------------------*/
 .footer {
     text-align: center;
     font-size: 0.5rem;
+    color: #FA8072;
     padding: 20px;
     border-top: solid #FA8072 5px;
 }
