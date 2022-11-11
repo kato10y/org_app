@@ -1,0 +1,261 @@
+@charset "UTF-8";
+
+/* 共通部分 
+-----------------------*/
+html {
+    font-size: 100%;
+}
+body {
+    font-family: 'Sawarabi Gothic', sans-serif;
+    color: #000000;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #000000;
+}
+img {
+    max-width: 100%;
+}
+textarea {
+    vertical-align: top;
+}
+
+/* 
+Header
+--------------------------*/
+.home_header {
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 9999;
+}
+.logo_link {
+    font-family: 'Dela Gothic One', cursive;
+    font-weight: 700;
+    color: #FA8072;
+}
+
+.second_header {
+    background-color: #FA8072;
+    padding: 5px 10% 15px 10%;
+    color: #ffffff;
+    display: flex;
+    border-radius: 0px 0px 30px 30px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 8888;
+}
+.second_header h2 {
+    height: 100%;
+}
+.icons_wrap {
+    display: flex;
+    right: 50px;
+    position: absolute;
+}
+.icons_wrap li {
+    margin-left: 30px;
+}
+.icon_wrap {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+.icon_wrap p {
+    font-size: 0.5rem;
+}
+/*ホバー時に色変更*/
+.icon_wrap :hover {
+    color: #000000;
+}
+
+/* 
+計画一覧部分
+--------------------------*/
+.main_content {
+    height: 100vh;
+    margin-top: -30px;
+    background-color: #d3d3d3;
+    position: relative;
+}
+.plans {
+    margin-top: 60px;
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 30px;
+}
+.plan_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+.plan_list {
+    padding: 10px 20px;
+}
+.plan_day {
+    font-size: 0.5rem;
+}
+.action_icons {
+    margin: 10px 20px;
+    padding: 5px;
+    border-left: solid #000000 1px;
+}
+.plan_icon {
+    height: 100%;
+    padding-left: 15px;
+}
+/*ホバー時に色変更*/
+.plan_icon :hover {
+    color: #FA8072;
+}
+
+/* 
+フォーム関連
+--------------------------*/
+.form_content {
+    height: 100vh;
+    background-color: #d3d3d3;
+}
+.form_wrap {
+    background-color: #ffffff;
+    width: 70%;
+    max-width: 700px;
+    margin: 100px auto;
+    text-align: center;
+    border-radius: 30px 30px;
+    box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+.form_headline {
+    background-color: #FA8072;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 30px 30px 0px 0px;
+}
+.forms {
+    display: inline-block;
+    text-align: left;
+}
+.form_item {
+    margin: 5% auto;
+}
+.form_title {
+    display: block;
+    padding-left: 5px;
+    border-left: solid #FA8072 3px;
+    margin-bottom: 5px;
+}
+.form_date {
+    display: flex;
+    justify-content: space-between;
+}
+/* 枠をつける */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+textarea {
+    border: solid 1px #d3d3d3;
+    padding: 2%;
+    width: 100%;
+}
+input[type="date"] {
+    position: relative;
+    padding: 0 10px;
+    width: 150px;
+    height: 36px;
+    border: 1px solid #d3d3d3;
+    background: transparent;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #d3d3d3;
+}
+/* チェックボックス */
+input[type="checkbox"] {
+    display: none;
+}
+.checkbox_text {
+    display: flex;
+    margin: 0 auto;
+    width: fit-content;
+    font-size: 80%;
+}
+/* 四角のチェックボックスの作成 */
+.checkbox_text::before {
+    content: '';
+    border: 1px solid #d3d3d3;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+/* チェック済みのときにチェックマークを表示 */
+input[type="checkbox"]:checked + .checkbox_text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 10px;
+    margin: auto;
+    width: 10px;
+    height: 15px;
+    border-right: 2px solid #FA8072;
+    border-bottom: 2px solid #FA8072;
+    transform: rotate(45deg);
+}
+/* ボタン */
+.btns {
+    text-align: center;
+}
+.keep_btn {
+    display: inline-block;
+    width: 120px;
+    height: 35px;
+    color: #FFFFFF;
+    background-color: #FA8072;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    border-radius: 10px 10px;
+    transition: all 0.3s ease-out;
+}
+.keep_btn:hover {
+    background-color: #FA807200;
+    outline: solid 1px #FA8072;
+    color: #FA8072;
+}
+.cancel_btn {
+    display: inline-block;
+    width: 120px;
+    height: 35px;
+    color: #FFFFFF;
+    background-color: #000000;
+    margin-bottom: 10px;
+    border-radius: 10px 10px;
+    transition: all 0.3s ease-out;
+}
+.cancel_btn:hover {
+    background-color: #00000000;
+    outline: solid 1px #000000;
+    color: #000000;
+}
+
+/* 
+Footer
+--------------------------*/
+.footer {
+    text-align: center;
+    font-size: 0.5rem;
+    padding: 20px;
+    border-top: solid #FA8072 5px;
+}
