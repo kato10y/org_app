@@ -24,3 +24,22 @@ function h($str)
     // ENT_QUOTES: シングルクオートとダブルクオートを共に変換する。
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
+
+// plansの表示
+function get_plans()
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // SQL文の組み立て
+    $sql = 'SELECT * FROM plan';
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+    // 結果の取得
+    return $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
