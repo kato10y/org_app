@@ -312,8 +312,15 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+}
+.plun_subject {
     display: flex;
     align-items: center;
+}
+.plan_detail {
+    font-size: 90%;
+    color: #808080;
+    margin: 20px;
 }
 .time {
     font-size: 0.9rem;
@@ -321,6 +328,7 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     padding: 5px 15px;
     text-align: center;
 }
+/* 予約関連　*/
 .reserve_mark {
     text-align: center;
     width: 50px;
