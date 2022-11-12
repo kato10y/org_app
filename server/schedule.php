@@ -1,3 +1,11 @@
+<?php
+require_once __DIR__ . '/functions.php';
+// データベースに接続
+$dbh = connect_db();
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
 <?php include_once __DIR__ . '/_head.html' ?>
 
 <body>
@@ -15,19 +23,19 @@
         </h2>
         <ul class="icons_wrap">
             <li>
-                <a href="" class="icon_wrap">
+                <a href="move.php" class="icon_wrap">
                     <i class="fa-solid fa-train-subway"></i>
                     <p>移動</p>
                 </a>
             </li>
             <li>
-                <a href="" class="icon_wrap">
+                <a href="action.php" class="icon_wrap">
                     <i class="fa-solid fa-map"></i>
                     <p>行動</p>
                 </a>
             </li>
             <li>
-                <a href="" class="icon_wrap">
+                <a href="lodging.php" class="icon_wrap">
                     <i class="fa-solid fa-bed"></i>
                     <p>宿泊</p>
                 </a>

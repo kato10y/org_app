@@ -1,3 +1,13 @@
+<?php
+require_once __DIR__ . '/functions.php';
+require_once __DIR__ . '/config.php';
+
+// データの取得
+$plans = get_plans();
+?>
+
+<!DOCTYPE html>
+<html lang="ja">
 <?php include_once __DIR__ . '/_head.html' ?>
 
 <body>
@@ -15,7 +25,7 @@
         </h2>
         <ul class="icons_wrap">
             <li>
-                <a href="" class="icon_wrap">
+                <a href="plan.php" class="icon_wrap">
                     <i class="fa-solid fa-square-plus"></i>
                     <p>追加</p>
                 </a>
@@ -24,36 +34,18 @@
     </div>
     <div class="main_content">
         <div class="plans">
-            <article class="plan_wrap">
-                <a href="" class="plan_list">
-                    <p class="plan_day">2022/12/25〜2023/01/02</p>
-                    <p>計画タイトル</p>
-                </a>
-                <div class="action_icons">
-                    <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </article>
-            <article class="plan_wrap">
-                <a href="" class="plan_list">
-                    <p class="plan_day">2022/12/25〜2023/01/02</p>
-                    <p>計画タイトル</p>
-                </a>
-                <div class="action_icons">
-                    <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </article>
-            <article class="plan_wrap">
-                <a href="" class="plan_list">
-                    <p class="plan_day">2022/12/25〜2023/01/02</p>
-                    <p>計画タイトル</p>
-                </a>
-                <div class="action_icons">
-                    <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
-                </div>
-            </article>
+            <?php foreach ($plans as $plans) : ?>
+                <article class="plan_wrap">
+                    <a href="" class="plan_list">
+                        <p class="plan_day"><?= h($plans['start_date']) . '〜' ?><?= h($plans['end_date']) ?></p>
+                        <p><?= h($plans['plan_name']) ?></p>
+                    </a>
+                    <div class="action_icons">
+                        <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </article>
+            <?php endforeach; ?>
         </div>
     </div>
 </body>
