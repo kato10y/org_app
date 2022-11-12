@@ -1,4 +1,4 @@
-<?php include_once __DIR__ . '/_head.html' ?>
+<?php include_once __DIR__ . '/common/_head.html' ?>
 
 <body class="form_content">
     <div class="form_wrap">
@@ -21,12 +21,12 @@
             <div class="form_reserve">
                 <label for="reserve" class="form_title">予約</label>
                 <div class="select">
-                <select name="reserve">
-                    <option value="" selected>選択</option>
-                    <option value="済">済</option>
-                    <option value="未">未</option>
-                    <option value="不要">不要</option>
-                </select>
+                    <select name="reserve">
+                        <option value="" selected>選択</option>
+                        <option value="済">済</option>
+                        <option value="未">未</option>
+                        <option value="不要">不要</option>
+                    </select>
                 </div>
                 <input type="text" name="reservation_person" placeholder="予約担当者名">
             </div>

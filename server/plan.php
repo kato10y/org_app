@@ -1,4 +1,4 @@
-<?php include_once __DIR__ . '/_head.html' ?>
+<?php include_once __DIR__ . '/common/_head.html' ?>
 
 <body class="form_content">
     <div class="form_wrap">
@@ -45,4 +45,5 @@
         </form>
     </div>
 </body>
+
 </html>

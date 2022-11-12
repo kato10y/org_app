@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ . '/functions.php';
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/common/functions.php';
+require_once __DIR__ . '/common/config.php';
 
 // データの取得
 $plans = get_plans();
@@ -8,7 +8,7 @@ $plans = get_plans();
 
 <!DOCTYPE html>
 <html lang="ja">
-<?php include_once __DIR__ . '/_head.html' ?>
+<?php include_once __DIR__ . '/common/_head.html' ?>
 
 <body>
     <header class="home_header">
@@ -52,4 +52,5 @@ $plans = get_plans();
 <footer class="footer">
     <div class="footer_flex"><i class="fa-solid fa-suitcase"></i>タビスケ Made by Yukari</div>
 </footer>
+
 </html>

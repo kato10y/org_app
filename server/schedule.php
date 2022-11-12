@@ -1,12 +1,12 @@
 <?php
-require_once __DIR__ . '/functions.php';
-require_once __DIR__ . '/config.php';
+require_once __DIR__ . '/common/functions.php';
+require_once __DIR__ . '/common/config.php';
 
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
-<?php include_once __DIR__ . '/_head.html' ?>
+<?php include_once __DIR__ . '/common/_head.html' ?>
 
 <body>
     <header class="home_header">
@@ -123,9 +123,15 @@ require_once __DIR__ . '/config.php';
                     </div>
                 </div>
                 <div class="plan_detail">
-                    <div>予約担当者<span>鈴木</span></div>
-                    <div>一人当たりの費用<span>8000円</span></div>
-                    <div>備考<span>XXXXX</span></div>
+                    <div class="detail_wrap">
+                        <div>予約担当者</div><div class="detail_content">鈴木</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>一人当たりの費用</div><div class="detail_content">8000円</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>備考</div><div class="detail_content">XXXX</div>
+                    </div>
                 </div>
             </article>
         </div>
