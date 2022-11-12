@@ -54,7 +54,7 @@
             </div>
             <div class="form_item btns">
                 <input type="submit" class="keep_btn" value="保存">
-                <input type="submit" class="cancel_btn" value="キャンセル">
+                <input type="submit" onclick="location.href='schedule.php'" class="cancel_btn" value="キャンセル">
             </div>
         </form>
     </div>
