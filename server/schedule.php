@@ -51,10 +51,11 @@ require_once __DIR__ . '/common/config.php';
                         <p>〜</p>
                         <p>17:00</p>
                     </div>
-                    <a href="">
+                    <label for="detail-box" class="ellipse">
                         <i class="fa-solid fa-map"></i>
                         シュノーケリング体験
-                    </a>
+                    </label>
+                    <input type="checkbox" value="" id="detail-box">
                     <div class="right_wrap">
                         <div class="reserve_mark already">
                             <p>予約</p>済
@@ -66,10 +67,18 @@ require_once __DIR__ . '/common/config.php';
                     </div>
                 </div>
                 <div class="plan_detail">
-                    <div>場所</div>
-                    <div>予約担当者</div>
-                    <div>一人当たりの費用</div>
-                    <div>備考</div>
+                    <div class="detail_wrap">
+                        <div>場所</div><div class="detail_content">○○海岸</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>予約担当者</div><div class="detail_content">大木</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>一人当たりの費用</div><div class="detail_content">10000円</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>備考</div><div class="detail_content">XXXX</div>
+                    </div>
                 </div>
             </article>
             <article class="schedule_wrap">
@@ -79,10 +88,11 @@ require_once __DIR__ . '/common/config.php';
                         <p>〜</p>
                         <p>19:00</p>
                     </div>
-                    <a href="">
+                    <label for="detail-box" class="ellipse">
                         <i class="fa-solid fa-train-subway"></i>
                         市街地からバスで移動
-                    </a>
+                    </label>
+                    <input type="checkbox" value="" id="detail-box">
                     <div class="right_wrap">
                         <div class="reserve_mark unnecessary">
                             <p>予約</p>不要
@@ -94,24 +104,33 @@ require_once __DIR__ . '/common/config.php';
                     </div>
                 </div>
                 <div class="plan_detail">
-                    <div>出発点</div>
-                    <div>到着点</div>
-                    <div>予約担当者</div>
-                    <div>一人当たりの費用</div>
-                    <div>備考</div>
+                    <div class="detail_wrap">
+                        <div>出発点</div><div class="detail_content">那覇</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>到着点</div><div class="detail_content">石垣</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>予約担当者</div><div class="detail_content">なし</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>一人当たりの費用</div><div class="detail_content">600円</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>備考</div><div class="detail_content">XXXX</div>
                 </div>
             </article>
             <article class="schedule_wrap">
                 <div class="plun_subject">
                     <div class="time">
-                        <p>19:00</p>
+                        <p><span>2022/08/10</span> 19:00</p>
                         <p>〜</p>
-                        <p>10:00</p>
+                        <p>2022/08/11 10:00</p>
                     </div>
-                    <a href="">
+                    <label for="detail-box" class="ellipse">
                         <i class="fa-solid fa-bed"></i>
-                        宿泊
-                    </a>
+                        YYYYYホテル宿泊
+                    </label>
                     <div class="right_wrap">
                         <div class="reserve_mark not_yet">
                             <p>予約</p>未
