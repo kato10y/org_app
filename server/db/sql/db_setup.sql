@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS plan (
     end_date DATE,
     plan_member INT(3) NOT NULL,
     plan_cost INT(10) DEFAULT 0,
-    alone BIT DEFAULT 0,
+    alone INT(1) DEFAULT 0,
     remarks VARCHAR(255)
 );
 
