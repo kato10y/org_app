@@ -30,6 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // タスク登録処理の実行
     insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $alone, $remarks);
 
+    // index.php にリダイレクト
+    header('Location: index.php');
+    exit;
+
 }
 ?>
 

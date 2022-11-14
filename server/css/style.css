@@ -312,28 +312,37 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
+    align-items: center;
+    display: grid;
+    grid-template-columns: 150px auto 180px;
 }
 .plun_subject {
     display: flex;
-    align-items: center;
 }
 .plan_detail {
     display:none;
     font-size: 90%;
-    color: #808080;
     margin: 10px;
+    grid-column-start: 1;
+    grid-column-end: 4;
 }
 .detail_wrap {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 350px;
+    width: 400px;
     margin: 5px auto;
+    padding-left: 20px;
+    background-color: #FACDC8;
+    color: #808080;
+    outline: solid 1px #FACDC8;
+    border-radius: 13px 13px;
+    font-size: 90%;
 }
 .detail_content {
-    outline: solid 1px #FA8072;
-    padding: 2px 10px;
+    padding: 3px 20px;
     width: 200px;
+    background-color: #FFFFFF;
 }
 .time {
     font-size: 0.9rem;
@@ -354,13 +363,28 @@ input[type="checkbox"]:checked + .checkbox_text::after {
 .ellipse:hover {
     color: #FA8072;
 }
-label[for="detail-box"]{
+label[for="detail-box1"]{
     display: block;
 }
 /* ボタンクリックで詳細の表示 */
-#detail-box:checked + .plan_detail {
+#detail-box1:checked ~ .plan_detail {
     display: block;
 }
+
+/* テスト用 */
+label[for="detail-box2"]{
+    display: block;
+}
+#detail-box2:checked ~ .plan_detail {
+    display: block;
+}
+label[for="detail-box3"]{
+    display: block;
+}
+#detail-box3:checked ~ .plan_detail {
+    display: block;
+}
+
 /* 予約関連　*/
 .reserve_mark {
     text-align: center;

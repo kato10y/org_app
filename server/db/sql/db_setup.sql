@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS itinerary_move (
     reserve TINYINT NOT NULL,
     reservation_person VARCHAR(30) NOT NULL,
     cost INT(10) DEFAULT 0,
-    alone BIT DEFAULT 0,
+    alone INT(1) DEFAULT 0,
     remarks VARCHAR(255),
     CONSTRAINT fk_move_plan_id
     FOREIGN KEY (plan_id)
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS itinerary_action (
     reserve INT NOT NULL,
     reservation_person VARCHAR(30),
     cost INT(10) DEFAULT 0,
-    alone BIT DEFAULT 0,
+    alone INT(1) DEFAULT 0,
     remarks VARCHAR(255),
     CONSTRAINT fk_action_plan_id
     FOREIGN KEY (plan_id)
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS itinerary_lodging (
     reserve INT NOT NULL,
     reservation_person VARCHAR(30),
     cost INT(10) DEFAULT 0,
-    alone BIT DEFAULT 0,
+    alone INT(1) DEFAULT 0,
     remarks VARCHAR(255),
     CONSTRAINT fk_lodging_plan_id
     FOREIGN KEY (plan_id)
