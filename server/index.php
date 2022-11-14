@@ -41,7 +41,7 @@ $plans = get_plans();
                         <p><?= h($plans['plan_name']) ?></p>
                     </a>
                     <div class="action_icons">
-                        <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <a href="plan_edit.php" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                 </article>
