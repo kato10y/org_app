@@ -195,7 +195,6 @@ input[type="datetime-local"] {
     background: transparent;
     box-sizing: border-box;
     font-size: 14px;
-    color: #d3d3d3;
 }
 /* チェックボックス */
 input[type="checkbox"] {
@@ -258,6 +257,7 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     margin-bottom: 10px;
     border-radius: 10px 10px;
     transition: all 0.3s ease-out;
+    padding: 5px 0;
 }
 .cancel_btn:hover {
     background-color: #00000000;

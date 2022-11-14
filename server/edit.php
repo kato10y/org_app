@@ -6,31 +6,7 @@ require_once __DIR__ . '/common/config.php';
 ---------------------------------------------*/
 // 初期化
 $title = '';
-$plan_name = '';
-$overview = '';
-$start_date = '';
-$end_date = '';
-$plan_member = '';
-$plan_cost = '';
-$alone = '';
-$remarks = '';
 
-// リクエストメソッドの判定
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // フォームに入力されたデータを受け取る
-    $plan_name = filter_input(INPUT_POST, 'plan_name');
-    $overview = filter_input(INPUT_POST, 'overview');
-    $start_date = filter_input(INPUT_POST, 'start_date');
-    $end_date = filter_input(INPUT_POST, 'end_date');
-    $plan_member = filter_input(INPUT_POST, 'plan_member');
-    $plan_cost = filter_input(INPUT_POST, 'start_date');
-    $alone = filter_input(INPUT_POST, 'start_date');
-    $remarks = filter_input(INPUT_POST, 'start_date');
-
-    // タスク登録処理の実行
-    insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $alone, $remarks);
-
-}
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <body class="form_content">
     <div class="form_wrap">
-        <h2 class="form_headline">計画登録</h2>
+        <h2 class="form_headline">計画編集</h2>
         <form action="" method="post" class="forms">
             <div class="form_item">
                 <label for="text" class="form_title">計画名</label>

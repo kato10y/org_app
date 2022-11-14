@@ -131,6 +131,7 @@ require_once __DIR__ . '/common/config.php';
                         <i class="fa-solid fa-bed"></i>
                         YYYYYホテル宿泊
                     </label>
+                    <input type="checkbox" value="" id="detail-box">
                     <div class="right_wrap">
                         <div class="reserve_mark not_yet">
                             <p>予約</p>未
