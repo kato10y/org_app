@@ -221,7 +221,7 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     position: absolute;
     bottom: 0;
     top: 0;
-    left: 10px;
+    left: 8px;
     margin: auto;
     width: 10px;
     height: 15px;

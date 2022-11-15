@@ -24,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $start_date = filter_input(INPUT_POST, 'start_date');
     $end_date = filter_input(INPUT_POST, 'end_date');
     $plan_member = filter_input(INPUT_POST, 'plan_member');
-    $plan_cost = filter_input(INPUT_POST, 'start_date');
-    $alone = filter_input(INPUT_POST, 'start_date');
-    $remarks = filter_input(INPUT_POST, 'start_date');
+    $plan_cost = filter_input(INPUT_POST, 'plan_cost');
+    $alone = filter_input(INPUT_POST, 'alone');
+    $remarks = filter_input(INPUT_POST, 'remarks');
 
     // バリデーション
     $errors = insert_validate($plan_name, $start_date, $end_date, $plan_member);
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="" method="post" class="forms">
             <div class="form_item">
                 <label for="text" class="form_title">計画名</label>
-                <input type="text" name="plan_name" required>
+                <input type="text" name="plan_name" id="plan_name" required>
             </div>
             <div class="form_item">
                 <label for="text" class="form_title">計画概要</label>
