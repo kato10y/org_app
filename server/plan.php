@@ -14,6 +14,7 @@ $plan_member = '';
 $plan_cost = '';
 $alone = '';
 $remarks = '';
+$errors = [];
 
 // リクエストメソッドの判定
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -27,13 +28,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $alone = filter_input(INPUT_POST, 'start_date');
     $remarks = filter_input(INPUT_POST, 'start_date');
 
-    // タスク登録処理の実行
-    insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $alone, $remarks);
+    // バリデーション
+    $errors = insert_validate($plan_name, $start_date, $end_date, $plan_member);
+
+    // エラーチェック
+    if (empty($errors)) {
+        // タスク登録処理の実行
+        insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $alone, $remarks);
+    }
+
 
     // index.php にリダイレクト
     header('Location: index.php');
     exit;
-
 }
 ?>
 
@@ -44,6 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body class="form_content">
     <div class="form_wrap">
         <h2 class="form_headline">計画登録</h2>
+        <!-- エラーが発生した場合、エラーメッセージを出力 -->
+        <?php require_once __DIR__ . '/common/_errors.php' ?>
+
         <form action="" method="post" class="forms">
             <div class="form_item">
                 <label for="text" class="form_title">計画名</label>
@@ -64,15 +74,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </div>
             <div class="form_item">
-                <label for="plan_member" min="0" pattern="^[+-]?([1-9][0-9]*|0)$" class="form_title">参加人数</label>
-                <input type="number" name="plan_member" required>
+                <label for="plan_member" class="form_title">参加人数</label>
+                <input type="number" min="0" pattern="^[+-]?([1-9][0-9]*|0)$" name="plan_member" required>
             </div>
             <div class="form_item">
-                <label for="number" min="0" pattern="^[+-]?([1-9][0-9]*|0)$" class="form_title">費用</label>
-                <input type="number" name="plan_cost">
+                <label for="plan_cost" class="form_title">費用</label>
+                <input type="number" min="0" pattern="^[+-]?([1-9][0-9]*|0)$" name="plan_cost">
             </div>
             <div class="cost_check">
-                <input type="checkbox" id="check">
+                <input type="checkbox" id="check" value="1">
                 <label for="check" name="alone" class="checkbox_text">一人当たりの金額です</label>
             </div>
             <div class="form_item">

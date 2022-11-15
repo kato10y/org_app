@@ -25,6 +25,28 @@ function h($str)
     return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 }
 
+// plan登録時のバリデーション
+function insert_validate($plan_name, $start_date, $end_date, $plan_member)
+{
+    // 初期化
+    $errors = [];
+
+    if (empty($plan_name)) {
+        $errors[] = MSG_PNAME_REQUIRED;
+    }
+    if (empty($start_date)) {
+        $errors[] = MSG_SDATE_REQUIRED;
+    }
+    if (empty($end_date)) {
+        $errors[] = MSG_EDATE_REQUIRED;
+    }
+    if (empty($plan_member)) {
+        $errors[] = MSG_MEMBER_REQUIRED;
+    }
+
+    return $errors;
+}
+
 // plan登録
 function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $alone, $remarks)
 {
