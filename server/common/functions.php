@@ -48,7 +48,7 @@ function insert_validate($plan_name, $start_date, $end_date, $plan_member)
 }
 
 // plan登録
-function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $alone, $remarks)
+function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $all_cost, $alone, $remarks)
 {
     // データベースに接続
     $dbh = connect_db();
@@ -57,9 +57,9 @@ function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_membe
     $sql = <<<EOM
     INSERT INTO
         plan
-        (plan_name, overview, start_date, end_date, plan_member, plan_cost, alone, remarks)
+        (plan_name, overview, start_date, end_date, plan_member, plan_cost, all_cost, alone, remarks)
     VALUES
-        (:plan_name, :overview, :start_date, :end_date, :plan_member, :plan_cost, :alone, :remarks)
+        (:plan_name, :overview, :start_date, :end_date, :plan_member, :plan_cost, :all_cost, :alone, :remarks)
     EOM;
 
     // プリペアドステートメントの準備
@@ -72,11 +72,13 @@ function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_membe
     $stmt->bindValue(':end_date', $end_date, PDO::PARAM_STR);
     $stmt->bindValue(':plan_member', $plan_member, PDO::PARAM_INT);
     $stmt->bindValue(':plan_cost', $plan_cost, PDO::PARAM_INT);
+    $stmt->bindValue(':all_cost', $all_cost, PDO::PARAM_INT);
     $stmt->bindValue(':alone', $alone, PDO::PARAM_INT);
     $stmt->bindValue(':remarks', $remarks, PDO::PARAM_STR);
 
     // プリペアドステートメントの実行
     $stmt->execute();
+
 }
 
 // plansの表示
