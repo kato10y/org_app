@@ -205,6 +205,7 @@ input[type="checkbox"] {
     margin: 0 auto;
     width: fit-content;
     font-size: 80%;
+    position: relative;
 }
 /* 四角のチェックボックスの作成 */
 .checkbox_text::before {
@@ -220,7 +221,7 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     position: absolute;
     bottom: 0;
     top: 0;
-    left: 10px;
+    left: 8px;
     margin: auto;
     width: 10px;
     height: 15px;
@@ -295,6 +296,16 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     border-color: #d3d3d3 transparent transparent transparent;
     content: "";
     pointer-events: none;
+}
+/* エラーメッセージ */
+.errors {
+    color: #FA4632;
+    list-style: none;
+}
+.errors li {
+    padding: 1%;
+    margin-bottom: 1%;
+    font-size: 80%;
 }
 
 /* 
