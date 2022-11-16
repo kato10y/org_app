@@ -8,7 +8,9 @@ CREATE TABLE IF NOT EXISTS plan (
     plan_cost INT(10) DEFAULT 0,
     alone INT(1) DEFAULT 0,
     all_cost INT(10) DEFAULT 0,
-    remarks VARCHAR(255)
+    remarks VARCHAR(255),
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS itinerary_move (
@@ -23,7 +25,10 @@ CREATE TABLE IF NOT EXISTS itinerary_move (
     reservation_person VARCHAR(30) NOT NULL,
     cost INT(10) DEFAULT 0,
     alone INT(1) DEFAULT 0,
+    all_cost INT(10) DEFAULT 0,
     remarks VARCHAR(255),
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_move_plan_id
     FOREIGN KEY (plan_id)
         REFERENCES plan(id)
@@ -41,7 +46,10 @@ CREATE TABLE IF NOT EXISTS itinerary_action (
     reservation_person VARCHAR(30),
     cost INT(10) DEFAULT 0,
     alone INT(1) DEFAULT 0,
+    all_cost INT(10) DEFAULT 0,
     remarks VARCHAR(255),
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_action_plan_id
     FOREIGN KEY (plan_id)
         REFERENCES plan(id)
@@ -58,7 +66,10 @@ CREATE TABLE IF NOT EXISTS itinerary_lodging (
     reservation_person VARCHAR(30),
     cost INT(10) DEFAULT 0,
     alone INT(1) DEFAULT 0,
+    all_cost INT(10) DEFAULT 0,
     remarks VARCHAR(255),
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     CONSTRAINT fk_lodging_plan_id
     FOREIGN KEY (plan_id)
         REFERENCES plan(id)
