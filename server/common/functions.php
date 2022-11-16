@@ -99,3 +99,75 @@ function get_plans()
     // 結果の取得
     return $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+
+// 受け取った id のレコードを取得
+function find_plans_by_id($id)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // $id を使用してデータを取得
+    $sql = <<<EOM
+    SELECT
+        *
+    FROM
+        plan
+    WHERE
+        id = :id;
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+    // 結果の取得
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// plan更新
+function update_plans($id, $plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $all_cost, $alone, $remarks)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // $id を使用してデータを更新
+    $sql = <<<EOM
+    UPDATE
+        plan
+    SET
+        plan_name = :plan_name
+        overview = :overview
+        start_date = :start_date
+        end_date = :end_date
+        plan_member = :plan_member
+        plan_cost = :plan_cost
+        all_cost = :all_cost
+        alone = :alone
+        remarks = :remarks
+    WHERE
+        id = :id
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':plan_name', $plan_name, PDO::PARAM_STR);
+    $stmt->bindValue(':overview', $overview, PDO::PARAM_STR);
+    $stmt->bindValue(':start_date', $start_date, PDO::PARAM_STR);
+    $stmt->bindValue(':end_date', $end_date, PDO::PARAM_STR);
+    $stmt->bindValue(':plan_member', $plan_member, PDO::PARAM_INT);
+    $stmt->bindValue(':plan_cost', $plan_cost, PDO::PARAM_INT);
+    $stmt->bindValue(':all_cost', $all_cost, PDO::PARAM_INT);
+    $stmt->bindValue(':alone', $alone, PDO::PARAM_INT);
+    $stmt->bindValue(':remarks', $remarks, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+}
