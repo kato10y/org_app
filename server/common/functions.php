@@ -171,3 +171,27 @@ function update_plans($id, $plan_name, $overview, $start_date, $end_date, $plan_
     // プリペアドステートメントの実行
     $stmt->execute();
 }
+
+// タスク削除
+function delete_plan($id)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // $id を使用してデータを削除
+    $sql = <<<EOM
+    DELETE FROM
+        plan
+    WHERE
+        id = :id
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+}
