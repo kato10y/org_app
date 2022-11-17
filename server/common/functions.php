@@ -140,14 +140,14 @@ function update_plans($id, $plan_name, $overview, $start_date, $end_date, $plan_
     UPDATE
         plan
     SET
-        plan_name = :plan_name
-        overview = :overview
-        start_date = :start_date
-        end_date = :end_date
-        plan_member = :plan_member
-        plan_cost = :plan_cost
-        all_cost = :all_cost
-        alone = :alone
+        plan_name = :plan_name,
+        overview = :overview,
+        start_date = :start_date,
+        end_date = :end_date,
+        plan_member = :plan_member,
+        plan_cost = :plan_cost,
+        all_cost = :all_cost,
+        alone = :alone,
         remarks = :remarks
     WHERE
         id = :id
@@ -157,6 +157,7 @@ function update_plans($id, $plan_name, $overview, $start_date, $end_date, $plan_
     $stmt = $dbh->prepare($sql);
 
     // パラメータのバインド
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
     $stmt->bindValue(':plan_name', $plan_name, PDO::PARAM_STR);
     $stmt->bindValue(':overview', $overview, PDO::PARAM_STR);
     $stmt->bindValue(':start_date', $start_date, PDO::PARAM_STR);
@@ -166,7 +167,6 @@ function update_plans($id, $plan_name, $overview, $start_date, $end_date, $plan_
     $stmt->bindValue(':all_cost', $all_cost, PDO::PARAM_INT);
     $stmt->bindValue(':alone', $alone, PDO::PARAM_INT);
     $stmt->bindValue(':remarks', $remarks, PDO::PARAM_STR);
-    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
 
     // プリペアドステートメントの実行
     $stmt->execute();
