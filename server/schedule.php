@@ -21,8 +21,8 @@ $id = filter_input(INPUT_GET, 'id');
 // 受け取った id のレコードを取得
 $trip_plan = find_plans_by_id($id);
 
-// moveデータの取得
-$move = get_itinerary();
+// itineraryデータの取得
+
 
 ?>
 
@@ -188,11 +188,18 @@ $move = get_itinerary();
             </article>
         </div>
     </div>
-    <div class="cost_tab">
-        <div class="cost_wrap">参加人数<p><?= h($trip_plan['plan_member']) ?>人</p></div>
-        <div class="cost_wrap">合計金額<p>10000円</p>
-        </div>
-        <div class="cost_wrap">１人あたり<p>2000円</p>
+    <div class="overview_wrap">
+        <details class="overview">
+            <summary>概要</summary>
+            <div>
+                <p class="mini_o"><?= h($trip_plan['overview']) ?></p>
+                <p class="mini_r"><?= h($trip_plan['remarks']) ?></p>
+            </div>
+        </details>
+        <div class="cost_tab">
+            <div class="cost_wrap">参加人数<p><?= h($trip_plan['plan_member']) ?>人</p></div>
+            <div class="cost_wrap">合計金額<p>10000円</p></div>
+            <div class="cost_wrap">１人あたり<p>2000円</p></div>
         </div>
     </div>
 </body>

@@ -422,12 +422,8 @@ label[for="detail-box3"]{
     background-color: #d3d3d3;
     color: #808080;
 }
-/* 費用の表示　*/
-.cost_tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+/* 概要・費用の表示　*/
+.overview_wrap {
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
     text-decoration: none;
@@ -438,9 +434,33 @@ label[for="detail-box3"]{
     color: #FFFFFF;
     padding: 5px 15px 10px 15px;
 }
+.overview {
+    font-size: 90%;
+    margin-bottom: 10px;
+}
+.overview div {
+    background-color: #FFFFFF;
+    color: #FA8072;
+    font-size: 1rem;
+    padding: 5px;
+}
+.mini_o {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #FA8072;
+}
+.mini_r {
+    font-size: 80%;
+    padding: 5px;
+}
+.cost_tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
 .cost_wrap {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 80%;
 }
 .cost_wrap p {
     background-color: #FFFFFF;
