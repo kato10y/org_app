@@ -2,6 +2,28 @@
 require_once __DIR__ . '/common/functions.php';
 require_once __DIR__ . '/common/config.php';
 
+/* plan更新処理
+---------------------------------------------*/
+// 初期化
+$plan_name = '';
+$overview = '';
+$start_date = '';
+$end_date = '';
+$plan_member = '';
+$plan_cost = '';
+$alone = '';
+$remarks = '';
+$errors = [];
+
+// index.php から渡された id を受け取る
+$id = filter_input(INPUT_GET, 'id');
+
+// 受け取った id のレコードを取得
+$trip_plan = find_plans_by_id($id);
+
+// moveデータの取得
+$move = get_itinerary();
+
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +41,7 @@ require_once __DIR__ . '/common/config.php';
     </header>
     <div class="second_header">
         <h2>
-            計画タイトル(沖縄旅行)
+            <?= h($trip_plan['plan_name']) ?>
         </h2>
         <ul class="icons_wrap">
             <li>
@@ -44,6 +66,7 @@ require_once __DIR__ . '/common/config.php';
     </div>
     <div class="main_content">
         <div class="schedules">
+            <!-- move -->
             <article class="schedule_wrap">
                 <div class="time">
                     <p>2022/08/10 17:30</p>
@@ -87,6 +110,7 @@ require_once __DIR__ . '/common/config.php';
                     </div>
                 </div>
             </article>
+            <!-- action -->
             <article class="schedule_wrap">
                 <div class="time">
                     <p>2022/08/10 15:30</p>
@@ -126,6 +150,7 @@ require_once __DIR__ . '/common/config.php';
                     </div>
                 </div>
             </article>
+            <!-- lodging -->
             <article class="schedule_wrap">
                 <div class="time">
                     <p>2022/08/10 19:00</p>
@@ -164,6 +189,7 @@ require_once __DIR__ . '/common/config.php';
         </div>
     </div>
     <div class="cost_tab">
+        <div class="cost_wrap">参加人数<p><?= h($trip_plan['plan_member']) ?>人</p></div>
         <div class="cost_wrap">合計金額<p>10000円</p>
         </div>
         <div class="cost_wrap">１人あたり<p>2000円</p>

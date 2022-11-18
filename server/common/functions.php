@@ -100,6 +100,25 @@ function get_plans()
     return $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// moveの表示
+function get_itinerary()
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // SQL文の組み立て
+    $sql = 'SELECT * FROM itinerary_move';
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+    // 結果の取得
+    return $plans = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
+
 // 受け取った id のレコードを取得
 function find_plans_by_id($id)
 {

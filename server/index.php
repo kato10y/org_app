@@ -36,7 +36,7 @@ $plans = get_plans();
         <div class="plans">
             <?php foreach ($plans as $plans): ?>
                 <article class="plan_wrap">
-                    <a href="schedule.php" class="plan_list">
+                    <a href="schedule.php?id=<?= h($plans['id']) ?>" class="plan_list">
                         <p class="plan_day"><?= h($plans['start_date']) . '〜' ?><?= h($plans['end_date']) ?></p>
                         <p><?= h($plans['plan_name']) ?></p>
                     </a>
