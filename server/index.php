@@ -34,17 +34,17 @@ $plans = get_plans();
     </div>
     <div class="main_content">
         <div class="plans">
-            <?php foreach ($plans as $plans): ?>
+            <?php foreach ($plans as $plan): ?>
                 <article class="plan_wrap">
-                    <a href="schedule.php?id=<?= h($plans['id']) ?>" class="plan_list">
-                        <p class="plan_day"><?= h($plans['start_date']) . '〜' ?><?= h($plans['end_date']) ?></p>
-                        <p><?= h($plans['plan_name']) ?></p>
+                    <a href="schedule.php?id=<?= h($plan['id']) ?>" class="plan_list">
+                        <p class="plan_day"><?= h($plan['start_date']) . '〜' ?><?= h($plan['end_date']) ?></p>
+                        <p><?= h($plan['plan_name']) ?></p>
                     </a>
                     <div class="action_icons">
-                        <a href="plan_edit.php?id=<?= h($plans['id']) ?>" class="plan_icon">
+                        <a href="plan_edit.php?id=<?= h($plan['id']) ?>" class="plan_icon">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </a>
-                        <a href="delete.php?id=<?= h($plans['id']) ?>" class="plan_icon">
+                        <a href="delete.php?id=<?= h($plan['id']) ?>" class="plan_icon">
                             <i class="fa-solid fa-trash-can"></i>
                         </a>
                     </div>

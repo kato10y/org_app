@@ -320,22 +320,34 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     padding-top: 80px;
 }
 .schedule_wrap {
-    width: 600px;
+    width: 550px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
     align-items: center;
     display: grid;
-    grid-template-columns: 400px 200px;
+    grid-template-columns: 350px auto;
 }
 .time {
     font-size: 0.9rem;
     line-height: 15px;
     padding: 5px 15px;
-    text-align: center;
 }
 .schedule_icon {
     margin: 5px 20px;
+}
+/* 表示不表示 */
+.point_action {
+    display: none !important;
+}
+.point_lodging {
+    display: none !important;
+}
+.place_move {
+    display: none !important;
+}
+.place_lodging {
+    display: none !important;
 }
 /* 詳細 */
 .plan_detail {

@@ -2,7 +2,7 @@
 require_once __DIR__ . '/common/functions.php';
 require_once __DIR__ . '/common/config.php';
 
-/* plan更新処理
+/* データの表示
 ---------------------------------------------*/
 // index.php から渡された id を受け取る
 $id = filter_input(INPUT_GET, 'id');
@@ -71,20 +71,20 @@ $itinerary = tying_plan_by_id($id);
                     <details class="plan_detail">
                         <summary class="ellipse"><?= h($itineraries['title']) ?></summary>
                         <!-- moveだったら表示 -->
-                            <div class="detail_wrap">
+                            <div class="detail_wrap point_<?= h($itineraries['identifier']) ?>">
                                 <div>出発点</div>
                                 <div class="detail_content">
                                     <?php if ($itineraries['identifier'] == 'move') echo $itineraries['starting_point']; ?>
                                 </div>
                             </div>
-                            <div class="detail_wrap">
+                            <div class="detail_wrap point_<?= h($itineraries['identifier']) ?>">
                                 <div>到着点</div>
                                 <div class="detail_content">
                                     <?php if ($itineraries['identifier'] == 'move') echo $itineraries['end_point']; ?>
                                 </div>
                             </div>
                         <!-- actionだったら表示 -->
-                        <div class="detail_wrap">
+                        <div class="detail_wrap place_<?= h($itineraries['identifier']) ?>">
                             <div>場所</div>
                             <div class="detail_content">
                                 <?php if ($itineraries['identifier'] == 'action') echo $itineraries['place']; ?>
@@ -118,7 +118,8 @@ $itinerary = tying_plan_by_id($id);
         <div class="cost_tab">
             <div class="cost_wrap">参加人数<p><?= h($trip_plan['plan_member']) ?>人</p>
             </div>
-            <div class="cost_wrap">合計金額<p>10000円</p>
+            <div class="cost_wrap">合計金額
+                <p>10000円</p>
             </div>
             <div class="cost_wrap">１人あたり<p>2000円</p>
             </div>
