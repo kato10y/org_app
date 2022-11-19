@@ -36,9 +36,9 @@ $errors = [];
                 <label for="reserve" class="form_title">予約</label>
                 <div class="select">
                     <select name="reserve" id="reserve">
-                        <option value="1">済</option>
-                        <option value="0">未</option>
-                        <option value="2" selected>不要</option>
+                        <option value="already">済</option>
+                        <option value="not_yet">未</option>
+                        <option value="unnecessary" selected>不要</option>
                     </select>
                 </div>
                 <input type="text" name="reservation_person" placeholder="予約担当者名">

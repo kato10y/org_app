@@ -370,6 +370,9 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     width: 200px;
     background-color: #FFFFFF;
 }
+.detail_content:empty {
+    display: none;
+}
 /* 予約関連　*/
 .reserve_mark {
     text-align: center;
