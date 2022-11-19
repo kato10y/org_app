@@ -222,7 +222,7 @@ function tying_plan_by_id($id)
         i.remarks
     FROM
         plan AS p
-    LEFT JOIN
+    INNER JOIN
         (
             SELECT
                 plan_id,
@@ -300,5 +300,5 @@ function tying_plan_by_id($id)
     $stmt->execute();
 
     // 結果の取得
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -4,17 +4,6 @@ require_once __DIR__ . '/common/config.php';
 
 /* plan更新処理
 ---------------------------------------------*/
-// 初期化
-$plan_name = '';
-$overview = '';
-$start_date = '';
-$end_date = '';
-$plan_member = '';
-$plan_cost = '';
-$alone = '';
-$remarks = '';
-$errors = [];
-
 // index.php から渡された id を受け取る
 $id = filter_input(INPUT_GET, 'id');
 
@@ -29,9 +18,6 @@ $itinerary = tying_plan_by_id($id);
 <!DOCTYPE html>
 <html lang="ja">
 <?php include_once __DIR__ . '/common/_head.html' ?>
-<pre><?php var_dump($id); ?></pre>
-<pre><?php var_dump($trip_plan); ?></pre>
-<pre><?php var_dump($itinerary); ?></pre>
 
 <body>
     <header class="home_header">
@@ -69,6 +55,50 @@ $itinerary = tying_plan_by_id($id);
     </div>
     <div class="main_content">
         <div class="schedules">
+            <?php foreach ($itinerary as $itinerary) : ?>
+                <article class="schedule_wrap">
+                    <div class="time"><?= h($itinerary['start_time']) ?> 〜 <?= h($itinerary['end_time']) ?></div>
+                    <div class="right_wrap">
+                        <div class="reserve_mark unnecessary">
+                            <span>予約</span>不要
+                        </div>
+                        <div class="action_icons schedule_icon">
+                            <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
+                            <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
+                        </div>
+                    </div>
+                    <details class="plan_detail">
+                        <summary class="ellipse"><?= h($itinerary['title']) ?></summary>
+                        <!-- moveだったら表示 -->
+                        <div class="detail_wrap">
+                            <div>出発点</div>
+                            <div class="detail_content">大宮</div>
+                        </div>
+                        <div class="detail_wrap">
+                            <div>到着点</div>
+                            <div class="detail_content">くりこま高原</div>
+                        </div>
+                        <!-- actionだったら表示 -->
+                        <div class="detail_wrap">
+                            <div>場所</div>
+                            <div class="detail_content">○○海岸</div>
+                        </div>
+                        <div class="detail_wrap">
+                            <div>予約担当者</div>
+                            <div class="detail_content"><?= h($itinerary['reservation_person']) ?></div>
+                        </div>
+                        <div class="detail_wrap">
+                            <div>一人当たりの費用</div>
+                            <div class="detail_content"><?= h($itinerary['cost']) ?>円</div>
+                        </div>
+                        <div class="detail_wrap">
+                            <div>備考</div>
+                            <div class="detail_content"><?= h($itinerary['remarks']) ?></div>
+                        </div>
+                    </details>
+                </article>
+            <?php endforeach; ?>
+
             <!-- move -->
             <article class="schedule_wrap">
                 <div class="time">2022/08/10 17:30 〜 2022/08/10 19:00</div>
@@ -90,6 +120,10 @@ $itinerary = tying_plan_by_id($id);
                     <div class="detail_wrap">
                         <div>到着点</div>
                         <div class="detail_content">くりこま高原</div>
+                    </div>
+                    <div class="detail_wrap">
+                        <div>場所</div>
+                        <div class="detail_content">○○海岸</div>
                     </div>
                     <div class="detail_wrap">
                         <div>予約担当者</div>

@@ -110,6 +110,7 @@ Header
 .action_icons {
     margin: 10px 20px;
     padding: 5px;
+    display: flex;
     border-left: solid #000000 1px;
 }
 .plan_icon {
@@ -325,7 +326,7 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
     align-items: center;
     display: grid;
-    grid-template-columns: 300px 300px;
+    grid-template-columns: 400px 200px;
 }
 .time {
     font-size: 0.9rem;
