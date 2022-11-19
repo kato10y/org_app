@@ -205,66 +205,6 @@ function tying_plan_by_id($id)
     // $id を使用してデータを取得
     $sql = <<<EOM
     SELECT
-    *
-    FROM
-    (SELECT
-        'action' AS identifier,
-        start_time,
-        end_time,
-        content AS title,
-        place,
-        '' AS starting_point,
-        '' AS end_point,
-        reserve,
-        reservation_person,
-        cost,
-        alone,
-        all_cost,
-        remarks
-    FROM
-        itinerary_action
-    WHERE
-        plan_id = :id
-    UNION
-    SELECT
-        'move' AS identifier,
-        start_time,
-        end_time,
-        transportation AS title,
-        '' AS place,
-        starting_point,
-        end_point,
-        reserve,
-        reservation_person,
-        cost,
-        alone,
-        all_cost,
-        remarks
-    FROM
-        itinerary_move
-    WHERE
-        plan_id = :id
-    UNION
-    SELECT
-        'lodging' AS identifier,
-        check_in AS start_time,
-        check_out AS end_time,
-        lodging_place AS title,
-        '' AS place,
-        '' AS starting_point,
-        '' AS end_point,
-        reserve,
-        reservation_person,
-        cost,
-        alone,
-        all_cost,
-        remarks
-    FROM
-        itinerary_lodging
-    WHERE
-        plan_id = :id
-    ) itinerary
-    SELECT
         p.id,
         i.plan_id,
         i.identifier,
@@ -283,11 +223,71 @@ function tying_plan_by_id($id)
     FROM
         plan AS p
     LEFT JOIN
-        itinerary AS i
+        (
+            SELECT
+                plan_id,
+                'action' AS identifier,
+                start_time,
+                end_time,
+                content AS title,
+                place,
+                '' AS starting_point,
+                '' AS end_point,
+                reserve,
+                reservation_person,
+                cost,
+                alone,
+                all_cost,
+                remarks
+            FROM
+                itinerary_action
+            WHERE
+                plan_id = :id
+            UNION
+            SELECT
+                plan_id,
+                'move' AS identifier,
+                start_time,
+                end_time,
+                transportation AS title,
+                '' AS place,
+                starting_point,
+                end_point,
+                reserve,
+                reservation_person,
+                cost,
+                alone,
+                all_cost,
+                remarks
+            FROM
+                itinerary_move
+            WHERE
+                plan_id = :id
+            UNION
+            SELECT
+                plan_id,
+                'lodging' AS identifier,
+                check_in AS start_time,
+                check_out AS end_time,
+                lodging_place AS title,
+                '' AS place,
+                '' AS starting_point,
+                '' AS end_point,
+                reserve,
+                reservation_person,
+                cost,
+                alone,
+                all_cost,
+                remarks
+            FROM
+                itinerary_lodging
+            WHERE
+                plan_id = :id
+        ) AS i
     ON
         p.id = i.plan_id
     ORDER BY
-        start_time
+        i.start_time
     EOM;
 
     // プリペアドステートメントの準備

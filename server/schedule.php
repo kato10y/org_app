@@ -22,13 +22,16 @@ $id = filter_input(INPUT_GET, 'id');
 $trip_plan = find_plans_by_id($id);
 
 // itineraryデータの取得
-
+$itinerary = tying_plan_by_id($id);
 
 ?>
 
 <!DOCTYPE html>
 <html lang="ja">
 <?php include_once __DIR__ . '/common/_head.html' ?>
+<pre><?php var_dump($id); ?></pre>
+<pre><?php var_dump($trip_plan); ?></pre>
+<pre><?php var_dump($itinerary); ?></pre>
 
 <body>
     <header class="home_header">
@@ -68,33 +71,25 @@ $trip_plan = find_plans_by_id($id);
         <div class="schedules">
             <!-- move -->
             <article class="schedule_wrap">
-                <div class="time">
-                    <p>2022/08/10 17:30</p>
-                    <p>〜</p>
-                    <p>2022/08/10 19:00</p>
-                </div>
-                <label for="detail-box1" class="ellipse">
-                    <i class="fa-solid fa-train-subway"></i>
-                    市街地からバスで移動
-                </label>
-                <input type="checkbox" value="" id="detail-box1">
+                <div class="time">2022/08/10 17:30 〜 2022/08/10 19:00</div>
                 <div class="right_wrap">
                     <div class="reserve_mark unnecessary">
-                        <p>予約</p>不要
+                        <span>予約</span>不要
                     </div>
-                    <div class="action_icons">
+                    <div class="action_icons schedule_icon">
                         <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                 </div>
-                <div class="plan_detail">
+                <details class="plan_detail">
+                    <summary class="ellipse">新幹線で移動</summary>
                     <div class="detail_wrap">
                         <div>出発点</div>
-                        <div class="detail_content">那覇</div>
+                        <div class="detail_content">大宮</div>
                     </div>
                     <div class="detail_wrap">
                         <div>到着点</div>
-                        <div class="detail_content">石垣</div>
+                        <div class="detail_content">くりこま高原</div>
                     </div>
                     <div class="detail_wrap">
                         <div>予約担当者</div>
@@ -108,30 +103,22 @@ $trip_plan = find_plans_by_id($id);
                         <div>備考</div>
                         <div class="detail_content">確認用確認用確認用確認用確認用確認用確認用確認用確認用確認用確認用確認用確認用確認用確認用</div>
                     </div>
-                </div>
+                </details>
             </article>
             <!-- action -->
             <article class="schedule_wrap">
-                <div class="time">
-                    <p>2022/08/10 15:30</p>
-                    <p>〜</p>
-                    <p>2022/08/10 17:00</p>
-                </div>
-                <label for="detail-box2" class="ellipse">
-                    <i class="fa-solid fa-map"></i>
-                    シュノーケリング体験
-                </label>
-                <input type="checkbox" value="" id="detail-box2">
+                <div class="time">2022/08/10 15:30 〜 2022/08/10 17:00</div>
                 <div class="right_wrap">
                     <div class="reserve_mark already">
-                        <p>予約</p>済
+                        <span>予約</span>済
                     </div>
-                    <div class="action_icons">
+                    <div class="action_icons schedule_icon">
                         <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                 </div>
-                <div class="plan_detail">
+                <details class="plan_detail">
+                    <summary class="ellipse">こけし作り体験</summary>
                     <div class="detail_wrap">
                         <div>場所</div>
                         <div class="detail_content">○○海岸</div>
@@ -148,30 +135,22 @@ $trip_plan = find_plans_by_id($id);
                         <div>備考</div>
                         <div class="detail_content">XXXX</div>
                     </div>
-                </div>
+                </details>
             </article>
             <!-- lodging -->
             <article class="schedule_wrap">
-                <div class="time">
-                    <p>2022/08/10 19:00</p>
-                    <p>〜</p>
-                    <p>2022/08/11 10:00</p>
-                </div>
-                <label for="detail-box3" class="ellipse">
-                    <i class="fa-solid fa-bed"></i>
-                    YYYYYホテル宿泊
-                </label>
-                <input type="checkbox" value="" id="detail-box3">
+                <div class="time">2022/08/10 19:00 〜 2022/08/11 10:00</div>
                 <div class="right_wrap">
                     <div class="reserve_mark not_yet">
-                        <p>予約</p>未
+                        <span>予約</span>未
                     </div>
-                    <div class="action_icons">
+                    <div class="action_icons schedule_icon">
                         <a href="" class="plan_icon"><i class="fa-solid fa-pen-to-square"></i></a>
                         <a href="" class="plan_icon"><i class="fa-solid fa-trash-can"></i></a>
                     </div>
                 </div>
-                <div class="plan_detail">
+                <details class="plan_detail">
+                    <summary class="ellipse">YYYYYホテル宿泊</summary>
                     <div class="detail_wrap">
                         <div>予約担当者</div>
                         <div class="detail_content">鈴木</div>
@@ -184,7 +163,7 @@ $trip_plan = find_plans_by_id($id);
                         <div>備考</div>
                         <div class="detail_content">XXXX</div>
                     </div>
-                </div>
+                </details>
             </article>
         </div>
     </div>
@@ -197,9 +176,12 @@ $trip_plan = find_plans_by_id($id);
             </div>
         </details>
         <div class="cost_tab">
-            <div class="cost_wrap">参加人数<p><?= h($trip_plan['plan_member']) ?>人</p></div>
-            <div class="cost_wrap">合計金額<p>10000円</p></div>
-            <div class="cost_wrap">１人あたり<p>2000円</p></div>
+            <div class="cost_wrap">参加人数<p><?= h($trip_plan['plan_member']) ?>人</p>
+            </div>
+            <div class="cost_wrap">合計金額<p>10000円</p>
+            </div>
+            <div class="cost_wrap">１人あたり<p>2000円</p>
+            </div>
         </div>
     </div>
 </body>
