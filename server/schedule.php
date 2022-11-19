@@ -70,14 +70,20 @@ $itinerary = tying_plan_by_id($id);
                     <details class="plan_detail">
                         <summary class="ellipse"><?= h($itinerary['title']) ?></summary>
                         <!-- moveだったら表示 -->
-                        <div class="detail_wrap">
-                            <div>出発点</div>
-                            <div class="detail_content">大宮</div>
-                        </div>
-                        <div class="detail_wrap">
-                            <div>到着点</div>
-                            <div class="detail_content">くりこま高原</div>
-                        </div>
+                        <?php foreach ($itinerary as $itinerary) : ?>
+                            <div class="detail_wrap">
+                                <div>出発点</div>
+                                <div class="detail_content">
+                                    <?php if ($itinerary['identifier'] == 'move') echo $itinerary['starting_point']; ?>
+                                </div>
+                            </div>
+                            <div class="detail_wrap">
+                                <div>到着点</div>
+                                <div class="detail_content">
+                                    <?php if ($itinerary['identifier'] == 'move') echo $itinerary['end_point']; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
                         <!-- actionだったら表示 -->
                         <div class="detail_wrap">
                             <div>場所</div>
