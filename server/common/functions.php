@@ -195,3 +195,110 @@ function delete_plan($id)
     // プリペアドステートメントの実行
     $stmt->execute();
 }
+
+//受け取ったプランidのレコードと予定を紐付け
+function tying_plan_by_id($id)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // $id を使用してデータを取得
+    $sql = <<<EOM
+    SELECT
+        p.id,
+        i.plan_id,
+        i.identifier,
+        i.start_time,
+        i.end_time,
+        i.title,
+        i.place,
+        i.starting_point,
+        i.end_point,
+        i.reserve,
+        i.reservation_person,
+        i.cost,
+        i.alone,
+        i.all_cost,
+        i.remarks
+    FROM
+        plan AS p
+    INNER JOIN
+        (
+            SELECT
+                plan_id,
+                'action' AS identifier,
+                start_time,
+                end_time,
+                content AS title,
+                place,
+                '' AS starting_point,
+                '' AS end_point,
+                reserve,
+                reservation_person,
+                cost,
+                alone,
+                all_cost,
+                remarks
+            FROM
+                itinerary_action
+            WHERE
+                plan_id = :id
+            UNION
+            SELECT
+                plan_id,
+                'move' AS identifier,
+                start_time,
+                end_time,
+                transportation AS title,
+                '' AS place,
+                starting_point,
+                end_point,
+                reserve,
+                reservation_person,
+                cost,
+                alone,
+                all_cost,
+                remarks
+            FROM
+                itinerary_move
+            WHERE
+                plan_id = :id
+            UNION
+            SELECT
+                plan_id,
+                'lodging' AS identifier,
+                check_in AS start_time,
+                check_out AS end_time,
+                lodging_place AS title,
+                '' AS place,
+                '' AS starting_point,
+                '' AS end_point,
+                reserve,
+                reservation_person,
+                cost,
+                alone,
+                all_cost,
+                remarks
+            FROM
+                itinerary_lodging
+            WHERE
+                plan_id = :id
+        ) AS i
+    ON
+        p.id = i.plan_id
+    ORDER BY
+        i.start_time
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+    // 結果の取得
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}

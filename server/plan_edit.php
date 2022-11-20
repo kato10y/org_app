@@ -2,7 +2,7 @@
 require_once __DIR__ . '/common/functions.php';
 require_once __DIR__ . '/common/config.php';
 
-/* タスク更新処理
+/* plan更新処理
 ---------------------------------------------*/
 // 初期化
 $plan_name = '';
@@ -19,7 +19,7 @@ $errors = [];
 $id = filter_input(INPUT_GET, 'id');
 
 // 受け取った id のレコードを取得
-$plan_edit = find_plans_by_id($id);
+$trip_plan = find_plans_by_id($id);
 
 // リクエストメソッドの判定
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -75,29 +75,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="" method="post" class="forms">
             <div class="form_item">
                 <label for="plan_name" class="form_title">計画名</label>
-                <input type="text" name="plan_name" id="plan_name" value="<?= h($plan_edit['plan_name']) ?>" required>
+                <input type="text" name="plan_name" id="plan_name" value="<?= h($trip_plan['plan_name']) ?>" required>
             </div>
             <div class="form_item">
                 <label for="overview" class="form_title">計画概要</label>
-                <textarea name="overview" cols="40" rows="3" id="overview"><?= h($plan_edit['overview']) ?></textarea>
+                <textarea name="overview" cols="40" rows="3" id="overview"><?= h($trip_plan['overview']) ?></textarea>
             </div>
             <div class="form_item form_date">
                 <div>
                     <label for="start_date" class="form_title">開始日</label>
-                    <input type="date" name="start_date" id="start_date" value="<?= h($plan_edit['start_date']) ?>" required>
+                    <input type="date" name="start_date" id="start_date" value="<?= h($trip_plan['start_date']) ?>" required>
                 </div>
                 <div>
                     <label for="end_date" class="form_title">終了日</label>
-                    <input type="date" name="end_date" id="end_date" value="<?= h($plan_edit['end_date']) ?>" required>
+                    <input type="date" name="end_date" id="end_date" value="<?= h($trip_plan['end_date']) ?>" required>
                 </div>
             </div>
             <div class="form_item">
                 <label for="plan_member" class="form_title">参加人数</label>
-                <input type="number" min="0" pattern="^[+-]?([1-9][0-9]*|0)$" name="plan_member" id="plan_member" value="<?= h($plan_edit['plan_member']) ?>" required>
+                <input type="number" min="0" pattern="^[+-]?([1-9][0-9]*|0)$" name="plan_member" id="plan_member" value="<?= h($trip_plan['plan_member']) ?>" required>
             </div>
             <div class="form_item">
                 <label for="plan_cost" class="form_title">費用</label>
-                <input type="number" min="0" pattern="^[+-]?([1-9][0-9]*|0)$" name="plan_cost" id="plan_cost" value="<?= h($plan_edit['plan_cost']) ?>">
+                <input type="number" min="0" pattern="^[+-]?([1-9][0-9]*|0)$" name="plan_cost" id="plan_cost" value="<?= h($trip_plan['plan_cost']) ?>">
             </div>
             <div class="cost_check">
                 <input type="checkbox" name="alone" id="alone" value="1" checked>
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="form_item">
                 <label for="remarks" class="form_title">備考</label>
-                <textarea cols="40" rows="3" name="remarks" id="remarks"><?= h($plan_edit['remarks']) ?></textarea>
+                <textarea cols="40" rows="3" name="remarks" id="remarks"><?= h($trip_plan['remarks']) ?></textarea>
             </div>
             <div class="form_item btns">
                 <input type="submit" class="keep_btn" value="保存">

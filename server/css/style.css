@@ -110,6 +110,7 @@ Header
 .action_icons {
     margin: 10px 20px;
     padding: 5px;
+    display: flex;
     border-left: solid #000000 1px;
 }
 .plan_icon {
@@ -319,23 +320,49 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     padding-top: 80px;
 }
 .schedule_wrap {
-    width: 600px;
+    width: 550px;
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
     align-items: center;
     display: grid;
-    grid-template-columns: 150px auto 180px;
+    grid-template-columns: 350px auto;
 }
-.plun_subject {
-    display: flex;
+.time {
+    font-size: 0.9rem;
+    line-height: 15px;
+    padding: 5px 15px;
 }
+.schedule_icon {
+    margin: 5px 20px;
+}
+/* 表示不表示 */
+.point_action {
+    display: none !important;
+}
+.point_lodging {
+    display: none !important;
+}
+.place_move {
+    display: none !important;
+}
+.place_lodging {
+    display: none !important;
+}
+/* 詳細 */
 .plan_detail {
-    display:none;
     font-size: 90%;
     margin: 10px;
+    margin-top: 0px;
     grid-column-start: 1;
-    grid-column-end: 4;
+    grid-column-end: 3;
+}
+.ellipse {
+    padding-left: 15px;
+    font-size: 1rem;
+}
+.ellipse:hover {
+    color: #FA8072;
 }
 .detail_wrap {
     display: flex;
@@ -355,55 +382,17 @@ input[type="checkbox"]:checked + .checkbox_text::after {
     width: 200px;
     background-color: #FFFFFF;
 }
-.time {
-    font-size: 0.9rem;
-    line-height: 15px;
-    padding: 5px 15px;
-    text-align: center;
+.detail_content:empty {
+    display: none;
 }
-.time span {
-    font-size: 90%;
-    color: #808080;
-}
-/* 詳細ボタンの代わり */
-.ellipse::before {
-    content:"";
-    display:block;
-    position:absolute;
-}
-.ellipse:hover {
-    color: #FA8072;
-}
-label[for="detail-box1"]{
-    display: block;
-}
-/* ボタンクリックで詳細の表示 */
-#detail-box1:checked ~ .plan_detail {
-    display: block;
-}
-
-/* テスト用 */
-label[for="detail-box2"]{
-    display: block;
-}
-#detail-box2:checked ~ .plan_detail {
-    display: block;
-}
-label[for="detail-box3"]{
-    display: block;
-}
-#detail-box3:checked ~ .plan_detail {
-    display: block;
-}
-
 /* 予約関連　*/
 .reserve_mark {
     text-align: center;
-    width: 50px;
-
+    width: 90px;
 }
-.reserve_mark p {
+.reserve_mark span {
     font-size: 0.8rem;
+    padding-right: 5px;
 }
 .right_wrap {
     display: flex;
@@ -422,12 +411,8 @@ label[for="detail-box3"]{
     background-color: #d3d3d3;
     color: #808080;
 }
-/* 費用の表示　*/
-.cost_tab {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
+/* 概要・費用の表示　*/
+.overview_wrap {
     border-radius: 10px;
     box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.3);
     text-decoration: none;
@@ -437,15 +422,40 @@ label[for="detail-box3"]{
     background: #FA8072;
     color: #FFFFFF;
     padding: 5px 15px 10px 15px;
+    max-width: 500px;
+}
+.overview {
+    font-size: 90%;
+    margin-bottom: 10px;
+}
+.overview div {
+    background-color: #FFFFFF;
+    color: #FA8072;
+    font-size: 1rem;
+    padding: 5px;
+}
+.mini_o {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #FA8072;
+}
+.mini_r {
+    font-size: 80%;
+    padding: 5px;
+}
+.cost_tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 .cost_wrap {
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 80%;
 }
 .cost_wrap p {
     background-color: #FFFFFF;
     color: #FA8072;
-    width: 90px;
+    width: 100px;
     font-size: 1rem;
 }
 /* 
