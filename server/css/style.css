@@ -455,7 +455,7 @@ input[type="checkbox"]:checked + .checkbox_text::after {
 .cost_wrap p {
     background-color: #FFFFFF;
     color: #FA8072;
-    width: 90px;
+    width: 100px;
     font-size: 1rem;
 }
 /* 
