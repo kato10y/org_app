@@ -118,15 +118,15 @@ $itinerary = tying_plan_by_id($id);
         <div class="cost_tab">
             <div class="cost_wrap">参加人数<p><?= h($trip_plan['plan_member']) ?>人</p>
             </div>
-            <div class="cost_wrap">合計金額
-                <p>
-                    <?= $allcost_total = '0';foreach ($itinerary as $itineraries) {$allcost_total += $itineraries['all_cost'];} echo $allcost_total.PHP_EOL; ?>
-                    円
-                </p>
-            </div>
             <div class="cost_wrap">１人あたり
                 <p>
                     <?= $cost_total = '0';foreach ($itinerary as $itineraries) {$cost_total += $itineraries['cost'];} echo $cost_total.PHP_EOL; ?>
+                    円
+                </p>
+            </div>
+            <div class="cost_wrap">合計金額
+                <p>
+                    <?= $allcost_total = '0';foreach ($itinerary as $itineraries) {$allcost_total += $itineraries['all_cost'];} echo $allcost_total.PHP_EOL; ?>
                     円
                 </p>
             </div>

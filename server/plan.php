@@ -11,6 +11,7 @@ $start_date = '';
 $end_date = '';
 $plan_member = '';
 $plan_cost = '';
+$all_cost = '';
 $alone = '';
 $remarks = '';
 $errors = [];
@@ -29,7 +30,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // aloneがNULLのときに0を代入
     if (is_null($alone)){
-        $alone = '0';
+        $alone = 0;
+    }
+    // plan_costがNULLのとき0を代入
+    if (empty($plan_cost)){
+        $plan_cost = 0;
     }
 
     // aloneが1(チェックが入っている)plan_memberでplan_costをかけ、all_costに入れる
@@ -46,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // エラーチェック
     if (empty($errors)) {
-        // タスク登録処理の実行
+        // plan登録処理の実行
         insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $all_cost, $alone, $remarks);
 
         // index.php にリダイレクト

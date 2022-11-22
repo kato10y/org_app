@@ -5,9 +5,66 @@ require_once __DIR__ . '/common/config.php';
 /* plan更新処理
 ---------------------------------------------*/
 // 初期化
+$id = '';
+$plan_id = '';
+$transportation = '';
+$starting_point = '';
+$end_point = '';
+$start_time = '';
+$end_time = '';
+$reserve = '';
+$reservation_person = '';
+$cost = '';
+$alone = '';
+$all_cost = '';
+$remarks = '';
 $errors = [];
 
+// schedule.php から渡された id を受け取る
+$plan_id = filter_input(INPUT_GET, 'id');
 
+// リクエストメソッドの判定
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // フォームに入力されたデータを受け取る
+    $transportation = filter_input(INPUT_POST, 'transportation');
+    $starting_point = filter_input(INPUT_POST, 'starting_point');
+    $end_point = filter_input(INPUT_POST, 'end_point');
+    $start_time = filter_input(INPUT_POST, 'start_time');
+    $end_time = filter_input(INPUT_POST, 'end_time');
+    $reserve = filter_input(INPUT_POST, 'reserve');
+    $reservation_person = filter_input(INPUT_POST, 'reservation_person');
+    $cost = filter_input(INPUT_POST, 'cost');
+    $alone = filter_input(INPUT_POST, 'alone');
+    $remarks = filter_input(INPUT_POST, 'remarks');
+
+    // aloneがNULLのときに0を代入
+    if (is_null($alone)){
+        $alone = '0';
+    }
+
+    // aloneが1(チェックが入っている)plan_memberでplan_costをかけ、all_costに入れる
+    // aloneが0だったら(チェックが入っていない)plan_costをall_costに入れ、plan_memberでplan_costを割ってplan_costに入れる
+    if ($alone == 1) {
+        $all_cost = $cost * $plan_member;
+    } else {
+        $all_cost = $cost;
+        $cost = $all_cost / $plan_member;
+    }
+
+    // バリデーション
+    $errors = insert_validate($plan_name, $start_date, $end_date, $plan_member);
+
+    // エラーチェック
+    if (empty($errors)) {
+        // タスク登録処理の実行
+        insert_moves($plan_id, $transportation, $starting_point, $end_point, $start_time, $end_time, $reserve, $reservation_person, $cost, $alone, $all_cost, $remarks);
+
+        // schedule.php にリダイレクト
+        header('Location: schedule.php');
+        exit;
+    }
+    
+}
 ?>
 
 <!DOCTYPE html>

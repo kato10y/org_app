@@ -47,6 +47,11 @@ function insert_validate($plan_name, $start_date, $end_date, $plan_member)
     return $errors;
 }
 
+// move登録時のバリデーション
+function insert_validate2($plan_name, $start_date, $end_date, $plan_member)
+{
+}
+
 // plan登録
 function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $all_cost, $alone, $remarks)
 {
@@ -72,6 +77,43 @@ function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_membe
     $stmt->bindValue(':end_date', $end_date, PDO::PARAM_STR);
     $stmt->bindValue(':plan_member', $plan_member, PDO::PARAM_INT);
     $stmt->bindValue(':plan_cost', $plan_cost, PDO::PARAM_INT);
+    $stmt->bindValue(':all_cost', $all_cost, PDO::PARAM_INT);
+    $stmt->bindValue(':alone', $alone, PDO::PARAM_INT);
+    $stmt->bindValue(':remarks', $remarks, PDO::PARAM_STR);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+}
+
+// move登録
+function insert_moves($plan_id, $transportation, $starting_point, $end_point, $start_time, $end_time, $reserve, $reservation_person, $cost, $alone, $all_cost, $remarks)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // レコードを追加
+    $sql = <<<EOM
+    INSERT INTO
+        move
+        (plan_id, transportation, starting_point, end_point, start_time, end_time, reserve, reservation_person, cost, alone, all_cost, remarks)
+    VALUES
+        (:plan_id, :transportation, :starting_point, :end_point, :start_time, :end_time, :reserve, :reservation_person, :cost, :alone, :all_cost, :remarks)
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':plan_id', $plan_id, PDO::PARAM_INT);
+    $stmt->bindValue(':transportation', $transportation, PDO::PARAM_STR);
+    $stmt->bindValue(':starting_point', $starting_point, PDO::PARAM_STR);
+    $stmt->bindValue(':end_point', $end_point, PDO::PARAM_STR);
+    $stmt->bindValue(':start_time', $start_time, PDO::PARAM_STR);
+    $stmt->bindValue(':end_time', $end_time, PDO::PARAM_STR);
+    $stmt->bindValue(':reserve', $reserve, PDO::PARAM_STR);
+    $stmt->bindValue(':reservation_person', $reservation_person, PDO::PARAM_STR);
+    $stmt->bindValue(':cost', $cost, PDO::PARAM_INT);
     $stmt->bindValue(':all_cost', $all_cost, PDO::PARAM_INT);
     $stmt->bindValue(':alone', $alone, PDO::PARAM_INT);
     $stmt->bindValue(':remarks', $remarks, PDO::PARAM_STR);
