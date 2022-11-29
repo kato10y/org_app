@@ -35,7 +35,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // aloneがNULLのときに0を代入
     if (is_null($alone)){
-        $alone = '0';
+        $alone = 0;
+    }
+    // plan_costがNULLのとき0を代入
+    if (empty($plan_cost)){
+        $plan_cost = 0;
     }
 
     // aloneが1(チェックが入っている)plan_memberでplan_costをかけ、all_costに入れる

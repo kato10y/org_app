@@ -134,7 +134,7 @@ $itinerary = tying_plan_by_id($id);
     </div>
 </body>
 <footer class="footer">
-    <div class="footer_flex"><i class="fa-solid fa-suitcase"></i>タビスケ Made by Yukari</div>
+    <div><i class="fa-solid fa-suitcase"></i>タビスケ Made by Yukari</div>
 </footer>
 
 </html>

@@ -82,8 +82,9 @@ Header
 計画一覧部分
 --------------------------*/
 .main_content {
-    height: 100vh;
+    min-height: 100vh;
     margin-top: -30px;
+    padding-bottom: 50px;
     background-color: #e9dfdb;
 }
 .plans {
@@ -470,4 +471,5 @@ Footer
     color: #FF9180;
     padding: 20px;
     border-top: solid #FF9180 5px;
+    z-index: -100;
 }
