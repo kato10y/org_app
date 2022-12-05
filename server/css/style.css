@@ -74,7 +74,7 @@ Header
     font-size: 0.5rem;
 }
 /*ホバー時に色変更*/
-.icon_wrap :hover {
+.icon_wrap:hover .change {
     color: #4f4642;
 }
 
@@ -384,9 +384,7 @@ input[type="checkbox"]:checked+.checkbox_text::after {
     padding: 3px 20px;
     width: 200px;
     background-color: #FFFFFF;
-}
-.detail_content:empty {
-    display: none;
+    min-height: 19px;
 }
 /* 予約関連　*/
 .reserve_mark {

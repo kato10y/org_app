@@ -18,10 +18,14 @@ $cost = '';
 $alone = '';
 $all_cost = '';
 $remarks = '';
+$plan_member = '';
 $errors = [];
 
 // schedule.php から渡された id を受け取る
 $plan_id = filter_input(INPUT_GET, 'id');
+
+// 受け取った plan_id のレコードを取得
+$trip_plan = find_plans_by_plan_id($plan_id);
 
 // リクエストメソッドの判定
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,26 +45,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (is_null($alone)){
         $alone = '0';
     }
+    // costがNULLのとき0を代入
+    if (empty($cost)){
+        $cost = 0;
+    }
 
     // aloneが1(チェックが入っている)plan_memberでplan_costをかけ、all_costに入れる
     // aloneが0だったら(チェックが入っていない)plan_costをall_costに入れ、plan_memberでplan_costを割ってplan_costに入れる
     if ($alone == 1) {
-        $all_cost = $cost * $plan_member;
+        $all_cost = $cost * $trip_plan['plan_member'];
     } else {
         $all_cost = $cost;
-        $cost = $all_cost / $plan_member;
+        $cost = $all_cost / $trip_plan['plan_member'];
     }
 
     // バリデーション
-    $errors = insert_validate($plan_name, $start_date, $end_date, $plan_member);
+    $errors = insert_validate2($transportation, $starting_point, $end_point, $start_time, $end_time, $reserve, $reservation_person);
 
     // エラーチェック
     if (empty($errors)) {
         // タスク登録処理の実行
         insert_moves($plan_id, $transportation, $starting_point, $end_point, $start_time, $end_time, $reserve, $reservation_person, $cost, $alone, $all_cost, $remarks);
 
+        // 変数にリダイレクト先URLを格納する
+        $url = "schedule.php?id=" . $plan_id;
+
         // schedule.php にリダイレクト
-        header('Location: schedule.php');
+        header("Location:" . $url );
         exit;
     }
     
@@ -120,11 +131,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
             <div class="form_item">
                 <label for="remarks" class="form_title">備考</label>
-                <textarea cols="40" rows="3" id="remarks"></textarea>
+                <textarea cols="40" rows="3" name="remarks" id="remarks"></textarea>
             </div>
             <div class="form_item btns">
                 <input type="submit" class="keep_btn" value="保存">
-                <a href="" class="cancel_btn">キャンセル</a>
+                <a href="schedule.php?id=<?= h($plan_id) ?>" class="cancel_btn">キャンセル</a>
             </div>
         </form>
     </div>

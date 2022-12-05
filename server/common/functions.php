@@ -48,8 +48,34 @@ function insert_validate($plan_name, $start_date, $end_date, $plan_member)
 }
 
 // move登録時のバリデーション
-function insert_validate2($plan_name, $start_date, $end_date, $plan_member)
+function insert_validate2($transportation, $starting_point, $end_point, $start_time, $end_time, $reserve, $reservation_person)
 {
+    // 初期化
+    $errors = [];
+
+    if (empty($transportation)) {
+        $errors[] = MSG_TITLE_REQUIRED;
+    }
+    if (empty($starting_point)) {
+        $errors[] = MSG_SPOINT_REQUIRED;
+    }
+    if (empty($end_point)) {
+        $errors[] = MSG_EPOINT_REQUIRED;
+    }
+    if (empty($start_time)) {
+        $errors[] = MSG_STIME_REQUIRED;
+    }
+    if (empty($end_time)) {
+        $errors[] = MSG_ETIME_REQUIRED;
+    }
+    if (empty($reserve)) {
+        $errors[] = MSG_RESERVE_REQUIRED;
+    }
+    if (empty($reservation_person)) {
+        $errors[] = MSG_PERSON_REQUIRED;
+    }
+
+    return $errors;
 }
 
 // plan登録
@@ -95,7 +121,7 @@ function insert_moves($plan_id, $transportation, $starting_point, $end_point, $s
     // レコードを追加
     $sql = <<<EOM
     INSERT INTO
-        move
+        itinerary_move
         (plan_id, transportation, starting_point, end_point, start_time, end_time, reserve, reservation_person, cost, alone, all_cost, remarks)
     VALUES
         (:plan_id, :transportation, :starting_point, :end_point, :start_time, :end_time, :reserve, :reservation_person, :cost, :alone, :all_cost, :remarks)
@@ -163,6 +189,35 @@ function find_plans_by_id($id)
 
     // パラメータのバインド
     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+    // 結果の取得
+    return $stmt->fetch(PDO::FETCH_ASSOC);
+}
+
+// 受け取った plan_id のレコードを取得
+function find_plans_by_plan_id($plan_id)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // $id を使用してデータを取得
+    $sql = <<<EOM
+    SELECT
+        *
+    FROM
+        plan
+    WHERE
+        id = :id;
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':id', $plan_id, PDO::PARAM_INT);
 
     // プリペアドステートメントの実行
     $stmt->execute();

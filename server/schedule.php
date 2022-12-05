@@ -4,7 +4,7 @@ require_once __DIR__ . '/common/config.php';
 
 /* データの表示
 ---------------------------------------------*/
-// index.php から渡された id を受け取る
+// 渡された id を受け取る
 $id = filter_input(INPUT_GET, 'id');
 
 // 受け取った id のレコードを取得
@@ -34,21 +34,21 @@ $itinerary = tying_plan_by_id($id);
         </h2>
         <ul class="icons_wrap">
             <li>
-                <a href="move.php" class="icon_wrap">
-                    <i class="fa-solid fa-train-subway"></i>
-                    <p>移動</p>
+                <a href="move.php?id=<?= h($trip_plan['id']) ?>" class="icon_wrap">
+                    <i class="fa-solid fa-train-subway change"></i>
+                    <p class="change">移動</p>
                 </a>
             </li>
             <li>
-                <a href="action.php" class="icon_wrap">
-                    <i class="fa-solid fa-map"></i>
-                    <p>行動</p>
+                <a href="action.php?id=<?= h($trip_plan['id']) ?>" class="icon_wrap">
+                    <i class="fa-solid fa-map change"></i>
+                    <p class="change">行動</p>
                 </a>
             </li>
             <li>
-                <a href="lodging.php" class="icon_wrap">
-                    <i class="fa-solid fa-bed"></i>
-                    <p>宿泊</p>
+                <a href="lodging.php?id=<?= h($trip_plan['id']) ?>" class="icon_wrap">
+                    <i class="fa-solid fa-bed change"></i>
+                    <p class="change">宿泊</p>
                 </a>
             </li>
         </ul>
