@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS itinerary_move (
     end_point VARCHAR(30) NOT NULL,
     start_time DATETIME NOT NULL,
     end_time DATETIME NOT NULL,
-    reserve varchar(20) NOT NULL,
+    reserve VARCHAR(20) NOT NULL,
     reservation_person VARCHAR(30) NOT NULL,
     cost INT(10) DEFAULT 0,
     alone INT(1) DEFAULT 0,

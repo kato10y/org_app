@@ -4,7 +4,7 @@ require_once __DIR__ . '/common/config.php';
 
 /* データの表示
 ---------------------------------------------*/
-// index.php から渡された id を受け取る
+// 渡された id を受け取る
 $id = filter_input(INPUT_GET, 'id');
 
 // 受け取った id のレコードを取得
@@ -34,21 +34,21 @@ $itinerary = tying_plan_by_id($id);
         </h2>
         <ul class="icons_wrap">
             <li>
-                <a href="move.php" class="icon_wrap">
-                    <i class="fa-solid fa-train-subway"></i>
-                    <p>移動</p>
+                <a href="move.php?id=<?= h($trip_plan['id']) ?>" class="icon_wrap">
+                    <i class="fa-solid fa-train-subway change"></i>
+                    <p class="change">移動</p>
                 </a>
             </li>
             <li>
-                <a href="action.php" class="icon_wrap">
-                    <i class="fa-solid fa-map"></i>
-                    <p>行動</p>
+                <a href="action.php?id=<?= h($trip_plan['id']) ?>" class="icon_wrap">
+                    <i class="fa-solid fa-map change"></i>
+                    <p class="change">行動</p>
                 </a>
             </li>
             <li>
-                <a href="lodging.php" class="icon_wrap">
-                    <i class="fa-solid fa-bed"></i>
-                    <p>宿泊</p>
+                <a href="lodging.php?id=<?= h($trip_plan['id']) ?>" class="icon_wrap">
+                    <i class="fa-solid fa-bed change"></i>
+                    <p class="change">宿泊</p>
                 </a>
             </li>
         </ul>
@@ -118,15 +118,15 @@ $itinerary = tying_plan_by_id($id);
         <div class="cost_tab">
             <div class="cost_wrap">参加人数<p><?= h($trip_plan['plan_member']) ?>人</p>
             </div>
-            <div class="cost_wrap">合計金額
-                <p>
-                    <?= $allcost_total = '0';foreach ($itinerary as $itineraries) {$allcost_total += $itineraries['all_cost'];} echo $allcost_total.PHP_EOL; ?>
-                    円
-                </p>
-            </div>
             <div class="cost_wrap">１人あたり
                 <p>
                     <?= $cost_total = '0';foreach ($itinerary as $itineraries) {$cost_total += $itineraries['cost'];} echo $cost_total.PHP_EOL; ?>
+                    円
+                </p>
+            </div>
+            <div class="cost_wrap">合計金額
+                <p>
+                    <?= $allcost_total = '0';foreach ($itinerary as $itineraries) {$allcost_total += $itineraries['all_cost'];} echo $allcost_total.PHP_EOL; ?>
                     円
                 </p>
             </div>
@@ -134,7 +134,7 @@ $itinerary = tying_plan_by_id($id);
     </div>
 </body>
 <footer class="footer">
-    <div class="footer_flex"><i class="fa-solid fa-suitcase"></i>タビスケ Made by Yukari</div>
+    <div><i class="fa-solid fa-suitcase"></i>タビスケ Made by Yukari</div>
 </footer>
 
 </html>
