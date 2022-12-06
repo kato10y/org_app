@@ -38,7 +38,7 @@ $plans = get_plans();
                 <article class="plan_wrap">
                     <a href="schedule.php?id=<?= h($plan['id']) ?>" class="plan_list">
                         <p class="plan_day"><?= h($plan['start_date']) . '〜' ?><?= h($plan['end_date']) ?></p>
-                        <p><?= h($plan['plan_name']) ?></p>
+                        <p class="plan_name"><?= h($plan['plan_name']) ?></p>
                     </a>
                     <div class="action_icons">
                         <a href="plan_edit.php?id=<?= h($plan['id']) ?>" class="plan_icon">
