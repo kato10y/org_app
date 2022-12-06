@@ -2,12 +2,78 @@
 require_once __DIR__ . '/common/functions.php';
 require_once __DIR__ . '/common/config.php';
 
-/* plan更新処理
+/* action登録処理
 ---------------------------------------------*/
 // 初期化
+$id = '';
+$plan_id = '';
+$content = '';
+$place = '';
+$start_time = '';
+$end_time = '';
+$reserve = '';
+$reservation_person = '';
+$cost = '';
+$alone = '';
+$all_cost = '';
+$remarks = '';
+$plan_member = '';
 $errors = [];
 
+// schedule.php から渡された id を受け取る
+$plan_id = filter_input(INPUT_GET, 'id');
 
+// 受け取った plan_id のレコードを取得
+$trip_plan = find_plans_by_plan_id($plan_id);
+
+// リクエストメソッドの判定
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // フォームに入力されたデータを受け取る
+    $content = filter_input(INPUT_POST, 'content');
+    $place = filter_input(INPUT_POST, 'place');
+    $start_time = filter_input(INPUT_POST, 'start_time');
+    $end_time = filter_input(INPUT_POST, 'end_time');
+    $reserve = filter_input(INPUT_POST, 'reserve');
+    $reservation_person = filter_input(INPUT_POST, 'reservation_person');
+    $cost = filter_input(INPUT_POST, 'cost');
+    $alone = filter_input(INPUT_POST, 'alone');
+    $remarks = filter_input(INPUT_POST, 'remarks');
+
+    // aloneがNULLのときに0を代入
+    if (is_null($alone)){
+        $alone = '0';
+    }
+    // costがNULLのとき0を代入
+    if (empty($cost)){
+        $cost = 0;
+    }
+
+    // aloneが1(チェックが入っている)plan_memberでplan_costをかけ、all_costに入れる
+    // aloneが0だったら(チェックが入っていない)plan_costをall_costに入れ、plan_memberでplan_costを割ってplan_costに入れる
+    if ($alone == 1) {
+        $all_cost = $cost * $trip_plan['plan_member'];
+    } else {
+        $all_cost = $cost;
+        $cost = $all_cost / $trip_plan['plan_member'];
+    }
+
+    // バリデーション
+    $errors = insert_validate3($content, $place, $start_time, $end_time, $reserve, $reservation_person);
+
+    // エラーチェック
+    if (empty($errors)) {
+        // タスク登録処理の実行
+        insert_actions($plan_id, $content, $place, $start_time, $end_time, $reserve, $reservation_person, $cost, $alone, $all_cost, $remarks);
+
+        // 変数にリダイレクト先URLを格納する
+        $url = "schedule.php?id=" . $plan_id;
+
+        // schedule.php にリダイレクト
+        header("Location:" . $url );
+        exit;
+    }
+    
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,11 +123,11 @@ $errors = [];
             </div>
             <div class="form_item">
                 <label for="remarks" class="form_title">備考</label>
-                <textarea cols="40" rows="3" id="remarks"></textarea>
+                <textarea cols="40" rows="3" name="remarks" id="remarks"></textarea>
             </div>
             <div class="form_item btns">
                 <input type="submit" class="keep_btn" value="保存">
-                <a href="" class="cancel_btn">キャンセル</a>
+                <a href="schedule.php?id=<?= h($plan_id) ?>" class="cancel_btn">キャンセル</a>
             </div>
         </form>
     </div>

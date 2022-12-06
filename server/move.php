@@ -2,7 +2,7 @@
 require_once __DIR__ . '/common/functions.php';
 require_once __DIR__ . '/common/config.php';
 
-/* plan更新処理
+/* move登録処理
 ---------------------------------------------*/
 // 初期化
 $id = '';

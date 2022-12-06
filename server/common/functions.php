@@ -78,6 +78,34 @@ function insert_validate2($transportation, $starting_point, $end_point, $start_t
     return $errors;
 }
 
+// action登録時のバリデーション
+function insert_validate3($content, $place, $start_time, $end_time, $reserve, $reservation_person)
+{
+    // 初期化
+    $errors = [];
+
+    if (empty($content)) {
+        $errors[] = MSG_TITLE_REQUIRED;
+    }
+    if (empty($place)) {
+        $errors[] = MSG_PLACE_REQUIRED;
+    }
+    if (empty($start_time)) {
+        $errors[] = MSG_STIME_REQUIRED;
+    }
+    if (empty($end_time)) {
+        $errors[] = MSG_ETIME_REQUIRED;
+    }
+    if (empty($reserve)) {
+        $errors[] = MSG_RESERVE_REQUIRED;
+    }
+    if (empty($reservation_person)) {
+        $errors[] = MSG_PERSON_REQUIRED;
+    }
+
+    return $errors;
+}
+
 // plan登録
 function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $all_cost, $alone, $remarks)
 {
@@ -135,6 +163,42 @@ function insert_moves($plan_id, $transportation, $starting_point, $end_point, $s
     $stmt->bindValue(':transportation', $transportation, PDO::PARAM_STR);
     $stmt->bindValue(':starting_point', $starting_point, PDO::PARAM_STR);
     $stmt->bindValue(':end_point', $end_point, PDO::PARAM_STR);
+    $stmt->bindValue(':start_time', $start_time, PDO::PARAM_STR);
+    $stmt->bindValue(':end_time', $end_time, PDO::PARAM_STR);
+    $stmt->bindValue(':reserve', $reserve, PDO::PARAM_STR);
+    $stmt->bindValue(':reservation_person', $reservation_person, PDO::PARAM_STR);
+    $stmt->bindValue(':cost', $cost, PDO::PARAM_INT);
+    $stmt->bindValue(':all_cost', $all_cost, PDO::PARAM_INT);
+    $stmt->bindValue(':alone', $alone, PDO::PARAM_INT);
+    $stmt->bindValue(':remarks', $remarks, PDO::PARAM_STR);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+}
+
+//action登録
+function insert_actions($plan_id, $content, $place, $start_time, $end_time, $reserve, $reservation_person, $cost, $alone, $all_cost, $remarks)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // レコードを追加
+    $sql = <<<EOM
+    INSERT INTO
+        itinerary_action
+        (plan_id, content, place, start_time, end_time, reserve, reservation_person, cost, alone, all_cost, remarks)
+    VALUES
+        (:plan_id, :content, :place, :start_time, :end_time, :reserve, :reservation_person, :cost, :alone, :all_cost, :remarks)
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':plan_id', $plan_id, PDO::PARAM_INT);
+    $stmt->bindValue(':content', $content, PDO::PARAM_STR);
+    $stmt->bindValue(':place', $place, PDO::PARAM_STR);
     $stmt->bindValue(':start_time', $start_time, PDO::PARAM_STR);
     $stmt->bindValue(':end_time', $end_time, PDO::PARAM_STR);
     $stmt->bindValue(':reserve', $reserve, PDO::PARAM_STR);
