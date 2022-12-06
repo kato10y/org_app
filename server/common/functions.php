@@ -106,6 +106,31 @@ function insert_validate3($content, $place, $start_time, $end_time, $reserve, $r
     return $errors;
 }
 
+// lodging登録時のバリデーション
+function insert_validate4($lodging_place, $check_in, $check_out, $reserve, $reservation_person)
+{
+    // 初期化
+    $errors = [];
+
+    if (empty($lodging_place)) {
+        $errors[] = MSG_LPLACE_REQUIRED;
+    }
+    if (empty($check_in)) {
+        $errors[] = MSG_ITIME_REQUIRED;
+    }
+    if (empty($check_out)) {
+        $errors[] = MSG_OTIME_REQUIRED;
+    }
+    if (empty($reserve)) {
+        $errors[] = MSG_RESERVE_REQUIRED;
+    }
+    if (empty($reservation_person)) {
+        $errors[] = MSG_PERSON_REQUIRED;
+    }
+
+    return $errors;
+}
+
 // plan登録
 function insert_plans($plan_name, $overview, $start_date, $end_date, $plan_member, $plan_cost, $all_cost, $alone, $remarks)
 {
@@ -201,6 +226,41 @@ function insert_actions($plan_id, $content, $place, $start_time, $end_time, $res
     $stmt->bindValue(':place', $place, PDO::PARAM_STR);
     $stmt->bindValue(':start_time', $start_time, PDO::PARAM_STR);
     $stmt->bindValue(':end_time', $end_time, PDO::PARAM_STR);
+    $stmt->bindValue(':reserve', $reserve, PDO::PARAM_STR);
+    $stmt->bindValue(':reservation_person', $reservation_person, PDO::PARAM_STR);
+    $stmt->bindValue(':cost', $cost, PDO::PARAM_INT);
+    $stmt->bindValue(':all_cost', $all_cost, PDO::PARAM_INT);
+    $stmt->bindValue(':alone', $alone, PDO::PARAM_INT);
+    $stmt->bindValue(':remarks', $remarks, PDO::PARAM_STR);
+
+    // プリペアドステートメントの実行
+    $stmt->execute();
+
+}
+
+//lodging登録
+function insert_lodging($plan_id, $lodging_place, $check_in, $check_out, $reserve, $reservation_person, $cost, $alone, $all_cost, $remarks)
+{
+    // データベースに接続
+    $dbh = connect_db();
+
+    // レコードを追加
+    $sql = <<<EOM
+    INSERT INTO
+        itinerary_lodging
+        (plan_id, lodging_place, check_in, check_out, reserve, reservation_person, cost, alone, all_cost, remarks)
+    VALUES
+        (:plan_id, :lodging_place, :check_in, :check_out, :reserve, :reservation_person, :cost, :alone, :all_cost, :remarks)
+    EOM;
+
+    // プリペアドステートメントの準備
+    $stmt = $dbh->prepare($sql);
+
+    // パラメータのバインド
+    $stmt->bindValue(':plan_id', $plan_id, PDO::PARAM_INT);
+    $stmt->bindValue(':lodging_place', $lodging_place, PDO::PARAM_STR);
+    $stmt->bindValue(':check_in', $check_in, PDO::PARAM_STR);
+    $stmt->bindValue(':check_out', $check_out, PDO::PARAM_STR);
     $stmt->bindValue(':reserve', $reserve, PDO::PARAM_STR);
     $stmt->bindValue(':reservation_person', $reservation_person, PDO::PARAM_STR);
     $stmt->bindValue(':cost', $cost, PDO::PARAM_INT);
